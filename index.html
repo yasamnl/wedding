@@ -11,10 +11,10 @@
   <style>
     /* --- RESET & VARIABLES --- */
     :root {
-      --primary-color: #1a2a4a;
+      --primary-color: #1a2a4a; /* Navy Blue dari referensi */
       --accent-gold: #c4a882;
       --text-dark: #2c2c2c;
-      --bg-overlay: rgba(255, 255, 255, 0.88);
+      --bg-overlay: rgba(255, 255, 255, 0.85); /* Lapisan putih transparan agar teks terbaca */
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,31 +23,46 @@
       font-family: 'Poppins', sans-serif; 
       color: var(--text-dark); 
       overflow-x: hidden;
-      background-color: #f0f0f0;
+      background-color: #f0f0f0; /* Fallback color */
     }
 
-    /* --- BACKGROUND CUSTOM IMAGE --- */
+    /* --- BACKGROUND CUSTOM IMAGE (FIXED PARALLAX) --- */
     .custom-bg {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
-      /* GANTI URL INI DENGAN LINK GAMBAR BACKGROUND ANDA */
-      background-image: url('https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=2545&auto=format&fit=crop'); 
-      background-size: cover; background-position: center; background-attachment: fixed;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -2;
+      /* GANTI URL DI BAWAH DENGAN LINK GAMBAR BACKGROUND ANDA */
+      background-image: url('https://img.gt.tc/assets/img/ziyabg.png'); 
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* Efek Parallax */
     }
 
+    /* Overlay putih agar teks tetap terbaca di atas gambar ramai */
     .bg-overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-      background: var(--bg-overlay); backdrop-filter: blur(2px);
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1;
+      opacity: 0.1; 
+      background: var(--bg-overlay);
+      backdrop-filter: blur(2px);
     }
 
-    /* --- ORNAMEN BUNGA POJOK --- */
+    /* --- ORNAMEN BUNGA POJOK (CUSTOM IMAGES) --- */
     .corner-flower {
-      position: absolute; width: 160px; height: 160px; z-index: 10; pointer-events: none; opacity: 0.9;
+      position: absolute;
+      width: 180px; height: 180px;
+      z-index: 10; pointer-events: none;
+      opacity: 0.9;
+      transition: transform 0.5s ease;
     }
+    /* Ganti src="" dengan link gambar bunga PNG transparan Anda */
     .corner-flower img { width: 100%; height: 100%; object-fit: contain; }
-    .top-left { top: -10px; left: -10px; }
-    .top-right { top: -10px; right: -10px; transform: scaleX(-1); }
-    .bottom-left { bottom: -10px; left: -10px; transform: scaleY(-1); }
-    .bottom-right { bottom: -10px; right: -10px; transform: scale(-1, -1); }
+    
+    .top-left { top: -20px; left: -20px; }
+    .top-right { top: -20px; right: -20px; transform: scaleX(-1); }
+    .bottom-left { bottom: -20px; left: -20px; transform: scaleY(-1); }
+    .bottom-right { bottom: -20px; right: -20px; transform: scale(-1, -1); }
 
     /* --- COVER SECTION --- */
     .cover {
@@ -56,47 +71,58 @@
     }
     .cover-content { z-index: 2; animation: fadeInUp 1.5s ease-out; position: relative; max-width: 600px; width: 100%; }
     
-    .cover-label { font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--primary-color); margin-bottom: 15px; font-weight: 600; }
-    .cover-names { font-family: 'Great Vibes', cursive; font-size: clamp(55px, 14vw, 90px); color: var(--primary-color); line-height: 1; text-shadow: 2px 2px 4px rgba(255,255,255,0.6); margin: 5px 0; }
-    .cover-amp { font-family: 'Great Vibes', cursive; font-size: 35px; color: var(--accent-gold); display: block; margin: 0 auto; }
-    .cover-date { font-family: 'Cormorant Garamond', serif; font-size: 20px; letter-spacing: 6px; color: var(--primary-color); margin-top: 15px; margin-bottom: 30px; font-weight: 700; }
+    .cover-label { font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: var(--primary-color); margin-bottom: 20px; font-weight: 600; }
+    .cover-names { font-family: 'Great Vibes', cursive; font-size: clamp(60px, 15vw, 100px); color: var(--primary-color); line-height: 1; text-shadow: 2px 2px 4px rgba(255,255,255,0.5); margin: 10px 0; }
+    .cover-amp { font-family: 'Great Vibes', cursive; font-size: 40px; color: var(--accent-gold); display: block; margin: 0 auto; }
+    .cover-date { font-family: 'Cormorant Garamond', serif; font-size: 22px; letter-spacing: 6px; color: var(--primary-color); margin-top: 20px; margin-bottom: 40px; font-weight: 700; }
     
     .btn-open {
-      padding: 15px 45px; background: var(--primary-color); border: none; color: #fff;
-      font-family: 'Poppins', sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+      padding: 16px 50px; background: var(--primary-color); border: none; color: #fff;
+      font-family: 'Poppins', sans-serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
       transition: all 0.3s ease; border-radius: 50px; box-shadow: 0 10px 20px rgba(26, 42, 74, 0.2);
     }
-    .btn-open:hover { background: #2d4a7a; transform: translateY(-3px); }
+    .btn-open:hover { background: #2d4a7a; transform: translateY(-3px); box-shadow: 0 15px 25px rgba(26, 42, 74, 0.3); }
 
-    /* --- MAIN CONTENT --- */
+    /* --- MAIN CONTENT WRAPPER --- */
     .main-content { display: none; max-width: 800px; margin: 0 auto; position: relative; z-index: 5; padding-bottom: 50px; }
-    section { padding: 60px 20px; position: relative; }
-    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 34px; color: var(--primary-color); margin-bottom: 10px; text-align: center; }
-    .section-subtitle { font-size: 12px; color: #666; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; text-align: center; }
-
-    /* --- HERO & QUOTE --- */
-    .hero { text-align: center; padding: 80px 20px; }
-    .hero-names { font-family: 'Great Vibes', cursive; font-size: clamp(45px, 11vw, 80px); color: var(--primary-color); line-height: 1.2; }
-    .hero-amp { font-family: 'Great Vibes', cursive; font-size: 35px; color: var(--accent-gold); display: block; margin: 10px 0; }
     
-    .quote-section { text-align: center; background: rgba(255,255,255,0.6); margin: 20px; border-radius: 20px; padding: 40px 20px; border: 1px solid rgba(255,255,255,0.8); }
-    .quote-text { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-style: italic; color: #444; line-height: 1.8; max-width: 600px; margin: 0 auto; }
-    .quote-source { font-size: 13px; color: var(--primary-color); margin-top: 20px; font-weight: 700; letter-spacing: 1px; }
+    /* --- SECTIONS GENERAL --- */
+    section { padding: 60px 20px; position: relative; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--primary-color); margin-bottom: 10px; text-align: center; }
+    .section-subtitle { font-size: 13px; color: #666; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; text-align: center; }
 
-    /* --- COUPLE SECTION (KUPU-KUPU) --- */
-    .couple-section { overflow: hidden; }
-    .couple-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; align-items: center; position: relative; z-index: 2; }
-    .couple-card { flex: 1; min-width: 240px; max-width: 280px; text-align: center; background: rgba(255,255,255,0.7); padding: 30px; border-radius: 20px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.5); }
-    .couple-photo-circle { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; border: 4px solid var(--accent-gold); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-    .couple-name { font-family: 'Great Vibes', cursive; font-size: 38px; color: var(--primary-color); margin-bottom: 10px; }
-    .couple-parents { font-size: 13px; color: #555; line-height: 1.6; }
-    .couple-divider { font-family: 'Great Vibes', cursive; font-size: 60px; color: var(--accent-gold); opacity: 0.8; }
+    /* --- HERO --- */
+    .hero { text-align: center; padding: 80px 20px; }
+    .hero-names { font-family: 'Great Vibes', cursive; font-size: clamp(50px, 12vw, 90px); color: var(--primary-color); line-height: 1.2; }
+    .hero-amp { font-family: 'Great Vibes', cursive; font-size: 40px; color: var(--accent-gold); display: block; margin: 10px 0; }
 
-    /* Animasi Kupu-kupu */
+    /* --- QUOTE --- */
+    .quote-section { text-align: center; background: rgba(255,255,255,0.6); margin: 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.8); }
+    .quote-text { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: #444; line-height: 1.8; max-width: 600px; margin: 0 auto; }
+    .quote-source { font-size: 14px; color: var(--primary-color); margin-top: 20px; font-weight: 700; letter-spacing: 1px; }
+
+    /* --- COUPLE SECTION (WITH BUTTERFLIES) --- */
+    .couple-section { overflow: hidden; /* Mencegah kupu-kupu keluar batas */ }
+    .couple-container { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; align-items: center; position: relative; z-index: 2; }
+    .couple-card { flex: 1; min-width: 250px; max-width: 300px; text-align: center; background: rgba(255,255,255,0.7); padding: 30px; border-radius: 20px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.5); }
+    
+    .couple-photo-circle {
+      width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
+      margin: 0 auto 20px; border: 4px solid var(--accent-gold);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .couple-name { font-family: 'Great Vibes', cursive; font-size: 40px; color: var(--primary-color); margin-bottom: 10px; }
+    .couple-parents { font-size: 14px; color: #555; line-height: 1.6; }
+    .couple-divider { font-family: 'Great Vibes', cursive; font-size: 70px; color: var(--accent-gold); opacity: 0.8; }
+
+    /* --- ANIMASI KUPU-KUPU --- */
     .butterfly {
-      position: absolute; width: 25px; height: 25px;
+      position: absolute;
+      width: 30px; height: 30px;
       background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="%231a2a4a" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C12 2 11 3 11 4C11 5 12 6 12 6C12 6 13 5 13 4C13 3 12 2 12 2ZM8.5 5C7.5 5 6.5 6 6.5 7C6.5 8 7.5 9 8.5 9C9.5 9 10.5 8 10.5 7C10.5 6 9.5 5 8.5 5ZM15.5 5C14.5 5 13.5 6 13.5 7C13.5 8 14.5 9 15.5 9C16.5 9 17.5 8 17.5 7C17.5 6 16.5 5 15.5 5ZM12 7C9 7 6 9 6 12C6 15 9 17 12 17C15 17 18 15 18 12C18 9 15 7 12 7Z"/></svg>');
-      background-size: contain; background-repeat: no-repeat; opacity: 0.6; pointer-events: none; z-index: 1;
+      background-size: contain; background-repeat: no-repeat;
+      opacity: 0.6; pointer-events: none; z-index: 1;
       animation: fly 15s infinite linear;
     }
     @keyframes fly {
@@ -109,57 +135,54 @@
       100% { transform: translate(0, 0) rotate(0deg) scale(0.8); opacity: 0; }
     }
 
-    /* --- EVENT & COUNTDOWN --- */
+    /* --- EVENT DETAILS --- */
     .event-cards { display: flex; flex-direction: column; gap: 20px; max-width: 600px; margin: 0 auto; }
     .event-card { background: rgba(255,255,255,0.8); padding: 30px; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.6); backdrop-filter: blur(10px); }
-    .event-type { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--primary-color); margin-bottom: 15px; font-weight: 700; }
-    .btn-map { display: inline-block; margin-top: 15px; padding: 10px 25px; background: var(--primary-color); color: #fff; text-decoration: none; border-radius: 25px; font-size: 12px; transition: 0.3s; }
+    .event-type { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--primary-color); margin-bottom: 15px; font-weight: 700; }
+    .btn-map { display: inline-block; margin-top: 15px; padding: 10px 25px; background: var(--primary-color); color: #fff; text-decoration: none; border-radius: 25px; font-size: 13px; transition: 0.3s; }
     .btn-map:hover { background: var(--accent-gold); }
 
-    .countdown-section { background: var(--primary-color); color: #fff; border-radius: 20px; margin: 20px; text-align: center; padding: 40px 20px; }
-    .countdown-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
-    .countdown-item { background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; min-width: 70px; border: 1px solid rgba(255,255,255,0.2); }
-    .countdown-number { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; display: block; }
-    .countdown-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
+    /* --- COUNTDOWN --- */
+    .countdown-section { background: var(--primary-color); color: #fff; border-radius: 20px; margin: 20px; text-align: center; }
+    .countdown-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
+    .countdown-item { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; min-width: 80px; border: 1px solid rgba(255,255,255,0.2); }
+    .countdown-number { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 700; display: block; }
+    .countdown-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
 
-    /* --- FORMS & GLASS PANEL --- */
-    .glass-panel { background: rgba(255,255,255,0.85); padding: 30px 20px; border-radius: 20px; max-width: 500px; margin: 0 auto; border: 1px solid rgba(255,255,255,0.6); backdrop-filter: blur(10px); }
+    /* --- CEK NAMA & FORM --- */
+    .glass-panel { background: rgba(255,255,255,0.85); padding: 40px 30px; border-radius: 20px; max-width: 500px; margin: 0 auto; border: 1px solid rgba(255,255,255,0.6); backdrop-filter: blur(10px); }
     .cek-input-group { display: flex; gap: 10px; margin-bottom: 20px; }
-    .form-input, .cek-input { flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 10px; outline: none; font-family: 'Poppins'; font-size: 14px; transition: 0.3s; width: 100%; }
+    .form-input, .cek-input { flex: 1; padding: 14px; border: 1px solid #ccc; border-radius: 10px; outline: none; font-family: 'Poppins'; transition: 0.3s; }
     .form-input:focus, .cek-input:focus { border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(26,42,74,0.1); }
-    .btn-action { padding: 12px 20px; background: var(--primary-color); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 500; font-size: 13px; transition: 0.3s; white-space: nowrap; }
+    .btn-action { padding: 14px 25px; background: var(--primary-color); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 500; transition: 0.3s; }
     .btn-action:hover { background: #2d4a7a; }
     
-    .result-box { margin-top: 15px; padding: 15px; border-radius: 10px; display: none; text-align: left; font-size: 13px; line-height: 1.6; }
+    .result-box { margin-top: 20px; padding: 15px; border-radius: 10px; display: none; text-align: left; font-size: 14px; }
     .result-box.found { background: #e8f5e9; border: 1px solid #a5d6a7; display: block; }
     .result-box.not-found { background: #fce4ec; border: 1px solid #ef9a9a; display: block; }
     .result-box.error { background: #fff3e0; border: 1px solid #ffcc80; display: block; animation: shake 0.4s; }
 
     /* --- FOOTER --- */
-    .footer { text-align: center; padding: 40px 20px; color: var(--primary-color); font-size: 13px; }
-    .footer-names { font-family: 'Great Vibes', cursive; font-size: 36px; margin-bottom: 10px; }
+    .footer { text-align: center; padding: 40px 20px; color: var(--primary-color); font-size: 14px; }
+    .footer-names { font-family: 'Great Vibes', cursive; font-size: 40px; margin-bottom: 10px; }
 
-    /* --- UTILS --- */
+    /* --- UTILS & ANIMATIONS --- */
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+    
     .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
     .scroll-reveal.active { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 600px) {
-      .corner-flower { width: 90px; height: 90px; }
+      .corner-flower { width: 100px; height: 100px; }
       .couple-divider { display: none; }
       .cek-input-group { flex-direction: column; }
-      .cover-names { font-size: clamp(45px, 12vw, 70px); }
     }
   </style>
 </head>
 <body>
 
-  <!-- BACKGROUND LAYERS -->
-  <div class="custom-bg"></div>
-  <div class="bg-overlay"></div>
-
-  <!-- COVER SECTION -->
+    <!-- COVER SECTION -->
   <div class="cover" id="coverSection">
     <!-- Ornamen Pojok Cover -->
     <div class="corner-flower top-left"><img src="https://assets.codepen.io/13471/floral-corner-1.png" alt="flower"></div>
@@ -175,14 +198,14 @@
       <div class="cover-date">27 . 08 . 2026</div>
       
       <!-- Foto Mempelai di Cover -->
-      <div style="width: 140px; height: 140px; margin: 15px auto; border-radius: 50%; overflow: hidden; border: 3px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+      <div style="width: 150px; height: 150px; margin: 20px auto; border-radius: 50%; overflow: hidden; border: 3px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
         <img src="https://img.gt.tc/assets/img/zyth.png" style="width:100%; height:100%; object-fit:cover;" alt="Couple">
       </div>
 
-      <!-- ✅ AREA NAMA TAMU UNDANGAN (CUSTOM URL) -->
+      <!-- ✅ AREA NAMA TAMU UNDANGAN (BARU) -->
       <div id="guestNameWrapper" style="margin-bottom: 25px; display: none;">
-        <p style="font-size: 12px; color: rgba(255,255,255,0.85); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">Kepada Yth Bapak/Ibu/Saudara/i</p>
-        <h2 id="guestNameDisplay" style="font-family: 'Great Vibes', cursive; font-size: 30px; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></h2>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.8); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">Kepada Yth Bapak/Ibu/Saudara/i</p>
+        <h2 id="guestNameDisplay" style="font-family: 'Great Vibes', cursive; font-size: 32px; color: #fff; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></h2>
       </div>
 
       <button class="btn-open" onclick="openInvitation()">Buka Undangan</button>
@@ -214,7 +237,7 @@
       
       <div class="couple-container">
         <div class="couple-card">
-          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="couple-photo-circle" alt="Ziya">
+          <img src="https://img.gt.tc/assets/img/zy.jpeg" class="couple-photo-circle" alt="Ziya">
           <div class="couple-name">Ziya</div>
           <p class="couple-parents">Putri dari<br><strong>Bapak ... & Ibu ...</strong></p>
         </div>
@@ -222,7 +245,7 @@
         <div class="couple-divider">&amp;</div>
         
         <div class="couple-card">
-          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="couple-photo-circle" alt="Thohirin">
+          <img src="https://img.gt.tc/assets/img/th.jpeg" class="couple-photo-circle" alt="Thohirin">
           <div class="couple-name">Thohirin</div>
           <p class="couple-parents">Putra dari<br><strong>Bapak ... & Ibu ...</strong></p>
         </div>
@@ -305,76 +328,96 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
-    // 1. CUSTOM GUEST NAME FROM URL
+
+    // Fungsi untuk membaca dan menampilkan nama dari URL
     function initGuestName() {
+      // Ambil parameter 'to' dari URL (contoh: ?to=mohammad-ilyas)
       const urlParams = new URLSearchParams(window.location.search);
       const guestParam = urlParams.get('to'); 
       
+      // Jika ada parameter 'to', tampilkan namanya
       if (guestParam) {
         const wrapper = document.getElementById('guestNameWrapper');
         const display = document.getElementById('guestNameDisplay');
         
-        // Format: ganti '-' dengan spasi & Capitalize setiap kata
+        // Format nama: ganti '-' dengan spasi & Capitalize huruf pertama setiap kata
         const formattedName = guestParam
           .replace(/-/g, ' ')
           .replace(/\b\w/g, char => char.toUpperCase());
           
         display.textContent = formattedName;
-        wrapper.style.display = 'block';
+        wrapper.style.display = 'block'; // Munculkan elemen
         
-        // Auto-isi form konfirmasi
+        // Opsional: Auto-isi form konfirmasi dengan nama tersebut
         const confInput = document.getElementById('confNama');
         if(confInput) confInput.value = formattedName;
       }
     }
 
-    // 2. OPEN INVITATION
+    // Jalankan saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', initGuestName);
+
+    // 1. OPEN INVITATION
     function openInvitation() {
       document.getElementById('coverSection').style.display = 'none';
       const main = document.getElementById('mainContent');
       main.style.display = 'block';
       
+      // Trigger animasi scroll setelah dibuka
       setTimeout(() => {
         document.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('active'));
-        startButterflies();
+        startButterflies(); // Mulai kupu-kupu setelah cover hilang
       }, 100);
       
       startCountdown();
     }
 
-    // 3. SCROLL ANIMATION OBSERVER
+    // 2. SCROLL ANIMATION OBSERVER
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('active');
       });
     }, { threshold: 0.1 });
 
-    // 4. BUTTERFLY ANIMATION
+    // 3. BUTTERFLY ANIMATION GENERATOR
     function startButterflies() {
       const container = document.getElementById('coupleArea');
       if(!container) return;
-      for(let i=0; i<6; i++) createButterfly(container, i * 2000);
+
+      // Buat 6 kupu-kupu dengan delay berbeda
+      for(let i=0; i<6; i++) {
+        createButterfly(container, i * 2000);
+      }
     }
 
     function createButterfly(parent, delay) {
       const b = document.createElement('div');
       b.className = 'butterfly';
-      b.style.left = (Math.random() * 80 + 10) + '%';
-      b.style.top = (Math.random() * 80 + 10) + '%';
+      
+      // Posisi random awal
+      const startX = Math.random() * 80 + 10; // 10% - 90%
+      const startY = Math.random() * 80 + 10;
+      
+      b.style.left = startX + '%';
+      b.style.top = startY + '%';
       b.style.animationDelay = (delay / 1000) + 's';
-      const size = 20 + Math.random() * 15;
+      
+      // Variasi ukuran dan warna sedikit
+      const size = 20 + Math.random() * 20;
       b.style.width = size + 'px';
       b.style.height = size + 'px';
+      
       parent.appendChild(b);
     }
 
-    // 5. COUNTDOWN TIMER
+    // 4. COUNTDOWN TIMER
     function startCountdown() {
       const target = new Date('2026-08-27T08:00:00').getTime();
       setInterval(() => {
         const now = new Date().getTime();
         const dist = target - now;
         if(dist < 0) return;
+        
         document.getElementById('cd-days').innerText = Math.floor(dist / (1000*60*60*24));
         document.getElementById('cd-hours').innerText = Math.floor((dist % (1000*60*60*24)) / (1000*60*60));
         document.getElementById('cd-minutes').innerText = Math.floor((dist % (1000*60*60)) / (1000*60));
@@ -382,7 +425,7 @@
       }, 1000);
     }
 
-    // 6. CEK NAMA (INTEGRASI GOOGLE SHEETS)
+    // 5. CEK NAMA (FUZZY SEARCH CLIENT SIDE LOGIC REMAINS SAME)
     function cekNama() {
       const nama = document.getElementById('cekInput').value.trim();
       const btn = document.getElementById('btnCek');
@@ -397,40 +440,26 @@
 
       btn.disabled = true; btn.innerText = '...';
       
-      // PENTING: Ganti URL Web App Apps Script Anda di sini jika menggunakan metode fetch
-      // Atau gunakan google.script.run jika di-hosting di Apps Script
-      // Untuk GitHub Pages, kita harus pakai fetch ke Web App URL
-      
-      // CONTOH IMPLEMENTASI FETCH KE APPS SCRIPT WEB APP:
-      const APPS_SCRIPT_URL = 'MASUKKAN_URL_WEB_APP_APPS_SCRIPT_ANDA_DISINI';
-      
-      fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify({ action: 'cekNama', nama: nama }),
-        headers: { 'Content-Type': 'application/json' }
-      })
-      .then(r => r.json())
-      .then(data => {
+      google.script.run.withSuccessHandler(r => {
         btn.disabled = false; btn.innerText = 'Cek';
-        if(data.error) { res.className='result-box error'; res.innerHTML=data.error; res.style.display='block'; return; }
+        if(r.error) { res.className='result-box error'; res.innerHTML=r.error; res.style.display='block'; return; }
         
-        if(!data.found) {
+        if(!r.found) {
           res.className='result-box not-found'; res.innerHTML='❌ Nama tidak ditemukan.'; res.style.display='block';
-        } else if(data.single) {
+        } else if(r.single) {
           res.className='result-box found'; 
-          res.innerHTML=`<strong>✅ ${data.nama}</strong><br>Status: ${data.status}`; res.style.display='block';
+          res.innerHTML=`<strong>✅ ${r.nama}</strong><br>Status: ${r.status}`; res.style.display='block';
         } else {
           let html = '<div style="font-weight:bold;margin-bottom:10px;">🔍 Kami menemukan beberapa nama:</div>';
-          data.candidates.forEach(c => { html += `<div style="padding:8px;border-bottom:1px solid #eee;">${c.nama} (${c.status})</div>`; });
+          r.candidates.forEach(c => { html += `<div style="padding:8px;border-bottom:1px solid #eee;">${c.nama} (${c.status})</div>`; });
           res.className='result-box found'; res.innerHTML=html; res.style.display='block';
         }
-      })
-      .catch(e => {
-        btn.disabled=false; btn.innerText='Cek'; res.className='result-box error'; res.innerHTML='Gagal terhubung ke server.'; res.style.display='block';
-      });
+      }).withFailureHandler(e => {
+        btn.disabled=false; btn.innerText='Cek'; res.className='result-box error'; res.innerHTML=e.message; res.style.display='block';
+      }).cekNamaTamu(nama);
     }
 
-    // 7. SUBMIT FORM
+    // 6. SUBMIT FORM
     function kirimKonfirmasi() {
       const data = {
         nama: document.getElementById('confNama').value,
@@ -444,29 +473,16 @@
       
       btn.disabled=true; btn.innerText='Mengirim...';
       
-      const APPS_SCRIPT_URL = 'MASUKKAN_URL_WEB_APP_APPS_SCRIPT_ANDA_DISINI';
-      
-      fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify({ action: 'konfirmasi', ...data }),
-        headers: { 'Content-Type': 'application/json' }
-      })
-      .then(r => r.json())
-      .then(r => {
+      google.script.run.withSuccessHandler(r => {
         btn.disabled=false; btn.innerText='Kirim Konfirmasi';
         res.className = r.success ? 'result-box found' : 'result-box error';
         res.innerHTML = r.message; res.style.display='block';
         if(r.success) document.getElementById('confNama').value='';
-      })
-      .catch(e => {
-        btn.disabled=false; btn.innerText='Kirim Konfirmasi';
-        res.className='result-box error'; res.innerHTML='Gagal mengirim.'; res.style.display='block';
-      });
+      }).simpanKonfirmasi(data);
     }
 
-    // INIT
+    // Init Scroll Observer on Load
     window.onload = () => {
-      initGuestName();
       document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
     };
   </script>
