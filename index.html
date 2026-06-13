@@ -14,8 +14,15 @@
     .custom-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; 
       background-image: url('https://img.gt.tc/assets/img/zybg.png'); 
       background-size: cover; background-position: center; background-attachment: fixed; }
-    .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; 
-      background: rgba(255,255,255,0.88); backdrop-filter: blur(2px); }
+    /* Overlay putih agar teks tetap terbaca di atas gambar ramai */
+    .bg-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1;
+      opacity: 0.1; 
+      background: var(--bg-overlay);
+      backdrop-filter: blur(2px);
+    }
 
     /* ORNAMEN POJOK */
     .corner-flower { position: absolute; width: 160px; height: 160px; z-index: 10; pointer-events: none; opacity: 0.9; }
