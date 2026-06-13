@@ -104,7 +104,18 @@
   </style>
 </head>
 <body>
+  <!-- AUDIO PLAYER HIDDEN -->
+<audio id="bgMusic" loop preload="auto">
+  <!-- GANTI DENGAN LINK FILE MP3 ANDA -->
+  <source src="https://assets.mixkit.co/music/preview/mixkit-wedding-bells-607.mp3" type="audio/mpeg">
+</audio>
 
+<!-- TOMBOL MUSIK FLOATING -->
+<div id="musicControl" style="position: fixed; bottom: 20px; right: 20px; z-index: 999; display: none;">
+  <button onclick="toggleMusic()" style="width: 45px; height: 45px; border-radius: 50%; background: var(--primary); border: 2px solid #fff; color: #fff; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; transition: all 0.3s;" title="Play/Pause Musik">
+    <span id="musicIcon" style="font-size: 18px;">▶️</span>
+  </button>
+</div>
   <!-- BACKGROUND -->
   <div class="custom-bg"></div>
   <div class="bg-overlay"></div>
@@ -351,6 +362,52 @@
       } catch (err) {
         btn.disabled = false; btn.innerText = 'Kirim Konfirmasi'; resBox.className = 'result-box error'; resBox.innerHTML = '⚠️ Gagal mengirim.'; resBox.style.display = 'block';
       }
+    }
+
+    // VARIABEL GLOBAL MUSIK
+    let isPlaying = false;
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicControl');
+    const musicIcon = document.getElementById('musicIcon');
+    
+    // FUNGSI TOGGLE PLAY/PAUSE
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        musicIcon.textContent = '▶️';
+        isPlaying = false;
+      } else {
+        music.play().catch(e => console.log('Autoplay blocked:', e));
+        musicIcon.textContent = '⏸️';
+        isPlaying = true;
+      }
+    }
+    
+    // MODIFIKASI FUNGSI openInvitation() YANG SUDAH ADA
+    function openInvitation() {
+      // ... (kode existing untuk hide cover & show main content tetap sama) ...
+      document.getElementById('coverSection').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'block';
+      
+      // ✅ MULAI MUSIK OTOMATIS SAAT UNDANGAN DIBUKA
+      music.volume = 0.5; // Set volume 50% agar tidak kaget
+      music.play().then(() => {
+        isPlaying = true;
+        musicIcon.textContent = '⏸️';
+      }).catch(err => {
+        // Jika autoplay diblokir browser, tampilkan tombol kontrol
+        console.log('Autoplay dicegah browser, menunggu interaksi user');
+      });
+      
+      // ✅ TAMPILKAN TOMBOL KONTROL MUSIK
+      musicBtn.style.display = 'block';
+      
+      // ... (kode existing untuk animasi & countdown tetap sama) ...
+      setTimeout(() => {
+        document.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('active'));
+        startButterflies();
+      }, 100);
+      startCountdown();
     }
   </script>
 </body>
