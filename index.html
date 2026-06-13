@@ -143,29 +143,34 @@
       <p class="quote-source">(QS. Ar-Rum: 21)</p>
     </section>
 
+    <!-- COUPLE SECTION (TARGET KUPU-KUPU) -->
     <section class="couple-section scroll-reveal" id="coupleArea">
       <h2 class="section-title">Mempelai</h2>
       <p class="section-subtitle">Insya Allah Akan Melangsungkan Pernikahan</p>
+      
       <div class="couple-container">
         <div class="couple-card">
-          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&q=80" class="couple-photo-circle" alt="Ziya">
+          <img src="https://img.gt.tc/assets/img/zy.jpeg" class="couple-photo-circle" alt="Ziya">
           <div class="couple-name">Ziya</div>
           <p class="couple-parents">Putri dari<br><strong>Bapak ... & Ibu ...</strong></p>
         </div>
+        
         <div class="couple-divider">&amp;</div>
+        
         <div class="couple-card">
-          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&q=80" class="couple-photo-circle" alt="Thohirin">
+          <img src="https://img.gt.tc/assets/img/th.jpeg" class="couple-photo-circle" alt="Thohirin">
           <div class="couple-name">Thohirin</div>
           <p class="couple-parents">Putra dari<br><strong>Bapak ... & Ibu ...</strong></p>
         </div>
       </div>
     </section>
 
+    <!-- EVENT DETAILS -->
     <section class="scroll-reveal">
       <h2 class="section-title">Detail Acara</h2>
       <div class="event-cards">
         <div class="event-card">
-          <div class="event-type"> Akad Nikah</div>
+          <div class="event-type">Akad Nikah</div>
           <p>Kamis, 27 Agustus 2026 | 08:00 WIB</p>
           <p>Masjid Agung Al-Hikmah</p>
           <a href="#" class="btn-map">Lihat Peta</a>
@@ -179,6 +184,7 @@
       </div>
     </section>
 
+    <!-- COUNTDOWN -->
     <section class="countdown-section scroll-reveal">
       <h2 class="section-title" style="color:#fff;">Menuju Hari Bahagia</h2>
       <div class="countdown-container">
@@ -189,32 +195,48 @@
       </div>
     </section>
 
+    <!-- CEK NAMA TAMU -->
     <section class="scroll-reveal">
       <h2 class="section-title">Cek Nama Tamu</h2>
       <div class="glass-panel">
-        <div class="input-group">
-          <input type="text" class="form-input" id="cekInput" placeholder="Masukkan nama Anda...">
+        <div class="cek-input-group">
+          <input type="text" class="cek-input" id="cekInput" placeholder="Masukkan nama Anda...">
           <button class="btn-action" id="btnCek" onclick="cekNama()">Cek</button>
         </div>
         <div class="result-box" id="cekResult"></div>
       </div>
     </section>
 
+    <!-- KONFIRMASI -->
     <section class="scroll-reveal">
       <h2 class="section-title">Konfirmasi Kehadiran</h2>
       <div class="glass-panel">
-        <div style="margin-bottom:12px;"><label style="display:block;margin-bottom:4px;font-size:11px;font-weight:600;">NAMA LENGKAP</label><input type="text" class="form-input" id="confNama" style="width:100%;"></div>
-        <div style="margin-bottom:12px;"><label style="display:block;margin-bottom:4px;font-size:11px;font-weight:600;">KEHADIRAN</label><select class="form-input" id="confStatus" style="width:100%;"><option value="✅ Hadir">Hadir</option><option value=" Tidak Hadir">Tidak Hadir</option></select></div>
-        <div style="margin-bottom:12px;"><label style="display:block;margin-bottom:4px;font-size:11px;font-weight:600;">UCAPAN / DOA</label><textarea class="form-input" id="confUcapan" rows="3" style="width:100%;resize:none;"></textarea></div>
+        <div style="margin-bottom:15px;">
+          <label style="display:block;margin-bottom:5px;font-size:12px;font-weight:600;">NAMA</label>
+          <input type="text" class="form-input" id="confNama" style="width:100%;">
+        </div>
+        <div style="margin-bottom:15px;">
+          <label style="display:block;margin-bottom:5px;font-size:12px;font-weight:600;">KEHADIRAN</label>
+          <select class="form-input" id="confStatus" style="width:100%;">
+            <option value="✅ Hadir">Hadir</option>
+            <option value="❌ Tidak Hadir">Tidak Hadir</option>
+          </select>
+        </div>
+        <div style="margin-bottom:15px;">
+          <label style="display:block;margin-bottom:5px;font-size:12px;font-weight:600;">UCAPAN</label>
+          <textarea class="form-input" id="confUcapan" rows="3" style="width:100%;resize:none;"></textarea>
+        </div>
         <button class="btn-action" style="width:100%;" id="btnSubmit" onclick="kirimKonfirmasi()">Kirim Konfirmasi</button>
-        <div class="result-box" id="submitResult" style="margin-top:12px;"></div>
+        <div class="result-box" id="submitResult" style="margin-top:15px;"></div>
       </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer scroll-reveal">
       <div class="footer-names">Ziya & Thohirin</div>
       <p>Terima kasih atas doa dan restunya</p>
     </footer>
+
   </div>
 
   <script>
