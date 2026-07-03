@@ -6,25 +6,20 @@
   <title>The Wedding of Ziya & Thohirin</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    :root { --primary: #1a2a4a; --gold: #c4a882; --text: #2c2c2c; }
+    :root {
+      --primary: #1a2a4a;
+      --gold: #c4a882;
+      --text: #2c2c2c;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; background: #f0f0f0; }
     
-    /* BACKGROUND & OVERLAY */
+    /* BACKGROUND */
     .custom-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; 
-      background-image: url('https://img.gt.tc/assets/img/ziyabg.jpg'); 
+      background-image: url('https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=2545&auto=format&fit=crop'); 
       background-size: cover; background-position: center; background-attachment: fixed; }
-    /* Overlay putih agar teks tetap terbaca di atas gambar ramai */
-    .bg-overlay { 
-    position: fixed; 
-    top: 0; left: 0; 
-    width: 100%; height: 100%; 
-    z-index: -1; 
-    background: rgba(255,255,255,0.88); 
-    backdrop-filter: blur(2px); 
-    opacity: 0.5; /* Ubah nilai ini (0.0 - 1.0) sesuai kebutuhan */
-    transition: opacity 0.8s ease-in-out; 
-  }
+    .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; 
+      background: rgba(255,255,255,0.88); backdrop-filter: blur(2px); }
 
     /* ORNAMEN POJOK */
     .corner-flower { position: absolute; width: 160px; height: 160px; z-index: 10; pointer-events: none; opacity: 0.9; }
@@ -49,264 +44,6 @@
     .section-title { font-family: 'Cormorant Garamond', serif; font-size: 34px; color: var(--primary); margin-bottom: 10px; text-align: center; }
     .section-subtitle { font-size: 12px; color: #666; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 35px; text-align: center; }
 
-        /* ==========================================
-       MODAL "THE JOURNEY TO HALAL"
-       ========================================== */
-    .journey-modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: 9999;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(8px);
-      animation: fadeIn 0.5s ease;
-      overflow-y: auto;
-    }
-    
-    .journey-modal-overlay.active { display: flex; align-items: center; justify-content: center; padding: 20px; }
-    
-    .journey-modal {
-      position: relative;
-      max-width: 700px;
-      width: 100%;
-      max-height: 90vh;
-      background: #fff;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
-      animation: slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    
-    /* Background foto mempelai dengan overlay */
-    .journey-modal::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      /* GANTI DENGAN URL FOTO MEMPELAI */
-      background-image: url('https://img.gt.tc/assets/img/zyth.png');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.15;
-      filter: blur(3px);
-      z-index: 0;
-    }
-    
-    .journey-modal-content {
-      position: relative;
-      z-index: 1;
-      padding: 50px 40px;
-      overflow-y: auto;
-      max-height: 90vh;
-      background: linear-gradient(135deg, rgba(255,255,255,0.97) 0%, rgba(250,248,244,0.97) 100%);
-    }
-    
-    .journey-close {
-      position: absolute;
-      top: 15px; right: 15px;
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      background: rgba(26, 42, 74, 0.9);
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-size: 18px;
-      z-index: 10;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .journey-close:hover { background: var(--gold); transform: rotate(90deg); }
-    
-    .journey-header {
-      text-align: center;
-      margin-bottom: 40px;
-      padding-bottom: 30px;
-      border-bottom: 1px solid rgba(196, 168, 130, 0.3);
-    }
-    
-    .journey-title {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(36px, 8vw, 52px);
-      color: var(--primary);
-      margin-bottom: 10px;
-      line-height: 1.1;
-    }
-    
-    .journey-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 14px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 600;
-    }
-    
-    .journey-divider {
-      width: 60px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 20px auto;
-    }
-    
-    /* Timeline Story */
-    .story-chapter {
-      margin-bottom: 35px;
-      padding-left: 30px;
-      border-left: 2px solid var(--gold);
-      position: relative;
-      opacity: 0;
-      transform: translateX(-20px);
-      transition: all 0.6s ease;
-    }
-    
-    .story-chapter.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    
-    .story-chapter::before {
-      content: '';
-      position: absolute;
-      left: -8px;
-      top: 5px;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: var(--gold);
-      border: 3px solid #fff;
-      box-shadow: 0 0 0 2px var(--gold);
-    }
-    
-    .story-chapter-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    
-    .story-chapter-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      color: var(--primary);
-      margin-bottom: 12px;
-      font-weight: 700;
-      font-style: italic;
-    }
-    
-    .story-chapter-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 16px;
-      line-height: 1.8;
-      color: #444;
-      text-align: justify;
-    }
-    
-    .journey-footer {
-      text-align: center;
-      margin-top: 40px;
-      padding-top: 30px;
-      border-top: 1px solid rgba(196, 168, 130, 0.3);
-    }
-    
-    .journey-quote {
-      font-family: 'Great Vibes', cursive;
-      font-size: 24px;
-      color: var(--primary);
-      font-style: italic;
-    }
-    
-    /* Tombol Baca Kisah */
-    .btn-journey {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 30px;
-      background: transparent;
-      border: 1.5px solid var(--primary);
-      color: var(--primary);
-      font-family: 'Poppins', sans-serif;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      border-radius: 30px;
-      transition: all 0.3s;
-    }
-    .btn-journey:hover {
-      background: var(--primary);
-      color: #fff;
-      transform: translateY(-2px);
-    }
-    
-    /* ==========================================
-       MUSIC PLAYER ELEGANT
-       ========================================== */
-    .music-player {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      z-index: 998;
-      display: none;
-    }
-    
-    .music-btn {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: var(--primary);
-      border: 2px solid #fff;
-      color: #fff;
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(26,42,74,0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .music-btn:hover { transform: scale(1.1); background: var(--gold); }
-    
-    .music-btn.playing { animation: pulse 2s infinite; }
-    
-    .music-btn svg { width: 20px; height: 20px; fill: #fff; }
-    
-    /* Rotating ring saat playing */
-    .music-ring {
-      position: absolute;
-      top: -4px; left: -4px; right: -4px; bottom: -4px;
-      border: 2px dashed rgba(255,255,255,0.5);
-      border-radius: 50%;
-      animation: spinRing 8s linear infinite;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .music-btn.playing .music-ring { opacity: 1; }
-    
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 6px 20px rgba(26,42,74,0.4); }
-      50% { box-shadow: 0 6px 30px rgba(196,168,130,0.6); }
-    }
-    @keyframes spinRing { to { transform: rotate(360deg); } }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-    
-    /* Scrollbar custom untuk modal */
-    .journey-modal-content::-webkit-scrollbar { width: 6px; }
-    .journey-modal-content::-webkit-scrollbar-track { background: rgba(196,168,130,0.1); }
-    .journey-modal-content::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
-    
-    @media (max-width: 600px) {
-      .journey-modal-content { padding: 40px 25px; }
-      .story-chapter { padding-left: 20px; }
-      .story-chapter-title { font-size: 18px; }
-      .story-chapter-text { font-size: 15px; }
-    }
-
     /* HERO & QUOTE */
     .hero { text-align: center; padding: 70px 20px; }
     .hero-names { font-family: 'Great Vibes', cursive; font-size: clamp(45px, 11vw, 85px); color: var(--primary); line-height: 1.2; }
@@ -323,7 +60,7 @@
     .couple-parents { font-size: 13px; color: #555; line-height: 1.6; }
     .couple-divider { font-family: 'Great Vibes', cursive; font-size: 60px; color: var(--gold); opacity: 0.8; }
 
-    .butterfly { position: absolute; width: 25px; height: 25px; background-image: url('data:image/jpg+xml;utf8,<jpg viewBox="0 0 24 24" fill="%231a2a4a" xmlns="http://www.w3.org/2000/jpg"><path d="M12 2C12 2 11 3 11 4C11 5 12 6 12 6C12 6 13 5 13 4C13 3 12 2 12 2ZM8.5 5C7.5 5 6.5 6 6.5 7C6.5 8 7.5 9 8.5 9C9.5 9 10.5 8 10.5 7C10.5 6 9.5 5 8.5 5ZM15.5 5C14.5 5 13.5 6 13.5 7C13.5 8 14.5 9 15.5 9C16.5 9 17.5 8 17.5 7C17.5 6 16.5 5 15.5 5ZM12 7C9 7 6 9 6 12C6 15 9 17 12 17C15 17 18 15 18 12C18 9 15 7 12 7Z"/></jpg>'); background-size: contain; background-repeat: no-repeat; opacity: 0.6; pointer-events: none; z-index: 1; animation: fly 12s infinite linear; }
+    .butterfly { position: absolute; width: 25px; height: 25px; background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="%231a2a4a" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C12 2 11 3 11 4C11 5 12 6 12 6C12 6 13 5 13 4C13 3 12 2 12 2ZM8.5 5C7.5 5 6.5 6 6.5 7C6.5 8 7.5 9 8.5 9C9.5 9 10.5 8 10.5 7C10.5 6 9.5 5 8.5 5ZM15.5 5C14.5 5 13.5 6 13.5 7C13.5 8 14.5 9 15.5 9C16.5 9 17.5 8 17.5 7C17.5 6 16.5 5 15.5 5ZM12 7C9 7 6 9 6 12C6 15 9 17 12 17C15 17 18 15 18 12C18 9 15 7 12 7Z"/></svg>'); background-size: contain; background-repeat: no-repeat; opacity: 0.6; pointer-events: none; z-index: 1; animation: fly 12s infinite linear; }
     @keyframes fly { 0% { transform: translate(0,0) rotate(0deg) scale(0.8); opacity:0; } 10% { opacity:0.8; } 25% { transform: translate(40px,-40px) rotate(15deg) scale(1); } 50% { transform: translate(80px,0) rotate(-10deg) scale(0.9); } 75% { transform: translate(40px,40px) rotate(-15deg) scale(1.1); } 90% { opacity:0.8; } 100% { transform: translate(0,0) rotate(0deg) scale(0.8); opacity:0; } }
 
     /* EVENT & COUNTDOWN */
@@ -360,7 +97,104 @@
     @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
     .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
     .scroll-reveal.active { opacity: 1; transform: translateY(0); }
-    @media(max-width:600px){ .corner-flower{width:90px;height:90px;} .couple-divider{display:none;} .input-group{flex-direction:column;} }
+    
+    /* TOMBOL BACA KISAH */
+    .btn-journey {
+      display: inline-block; margin-top: 20px; padding: 12px 30px;
+      background: transparent; border: 1.5px solid var(--primary); color: var(--primary);
+      font-family: 'Poppins', sans-serif; font-size: 12px; letter-spacing: 2px;
+      text-transform: uppercase; cursor: pointer; border-radius: 30px; transition: all 0.3s;
+    }
+    .btn-journey:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
+
+    /* ==========================================
+       MODAL "THE JOURNEY TO HALAL"
+       ========================================== */
+    .journey-modal-overlay {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 9999; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px);
+      animation: fadeIn 0.5s ease; overflow-y: auto;
+    }
+    .journey-modal-overlay.active { display: flex; align-items: center; justify-content: center; padding: 20px; }
+
+    .journey-modal {
+      position: relative; max-width: 700px; width: 100%; max-height: 90vh;
+      background: #fff; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+      animation: slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .journey-modal::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url('https://img.gt.tc/assets/img/zyth.png');
+      background-size: cover; background-position: center;
+      opacity: 0.15; filter: blur(3px); z-index: 0;
+    }
+    .journey-modal-content {
+      position: relative; z-index: 1; padding: 50px 40px;
+      overflow-y: auto; max-height: 90vh;
+      background: linear-gradient(135deg, rgba(255,255,255,0.97) 0%, rgba(250,248,244,0.97) 100%);
+    }
+    .journey-close {
+      position: absolute; top: 15px; right: 15px; width: 40px; height: 40px;
+      border-radius: 50%; background: rgba(26, 42, 74, 0.9); color: #fff;
+      border: none; cursor: pointer; font-size: 18px; z-index: 10;
+      transition: all 0.3s; display: flex; align-items: center; justify-content: center;
+    }
+    .journey-close:hover { background: var(--gold); transform: rotate(90deg); }
+
+    .journey-header { text-align: center; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid rgba(196, 168, 130, 0.3); }
+    .journey-title { font-family: 'Great Vibes', cursive; font-size: clamp(36px, 8vw, 52px); color: var(--primary); margin-bottom: 10px; line-height: 1.1; }
+    .journey-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .journey-divider { width: 60px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 20px auto; }
+
+    .story-chapter { margin-bottom: 35px; padding-left: 30px; border-left: 2px solid var(--gold); position: relative; opacity: 0; transform: translateX(-20px); transition: all 0.6s ease; }
+    .story-chapter.visible { opacity: 1; transform: translateX(0); }
+    .story-chapter::before { content: ''; position: absolute; left: -8px; top: 5px; width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--gold); }
+    .story-chapter-number { font-family: 'Cormorant Garamond', serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 8px; }
+    .story-chapter-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--primary); margin-bottom: 12px; font-weight: 700; font-style: italic; }
+    .story-chapter-text { font-family: 'Cormorant Garamond', serif; font-size: 16px; line-height: 1.8; color: #444; text-align: justify; }
+
+    .journey-footer { text-align: center; margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(196, 168, 130, 0.3); }
+    .journey-quote { font-family: 'Great Vibes', cursive; font-size: 24px; color: var(--primary); font-style: italic; }
+
+    /* ==========================================
+       MUSIC PLAYER ELEGANT
+       ========================================== */
+    .music-player { position: fixed; bottom: 25px; right: 25px; z-index: 998; display: none; }
+    .music-btn {
+      width: 50px; height: 50px; border-radius: 50%; background: var(--primary);
+      border: 2px solid #fff; color: #fff; cursor: pointer;
+      box-shadow: 0 6px 20px rgba(26,42,74,0.4);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .music-btn:hover { transform: scale(1.1); background: var(--gold); }
+    .music-btn.playing { animation: pulse 2s infinite; }
+    .music-btn svg { width: 20px; height: 20px; fill: #fff; }
+    .music-ring {
+      position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px;
+      border: 2px dashed rgba(255,255,255,0.5); border-radius: 50%;
+      animation: spinRing 8s linear infinite; opacity: 0; transition: opacity 0.3s;
+    }
+    .music-btn.playing .music-ring { opacity: 1; }
+    @keyframes pulse { 0%,100%{box-shadow:0 6px 20px rgba(26,42,74,0.4)} 50%{box-shadow:0 6px 30px rgba(196,168,130,0.6)} }
+    @keyframes spinRing { to { transform: rotate(360deg); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+    .journey-modal-content::-webkit-scrollbar { width: 6px; }
+    .journey-modal-content::-webkit-scrollbar-track { background: rgba(196,168,130,0.1); }
+    .journey-modal-content::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    @media (max-width: 600px) {
+      .corner-flower { width: 90px; height: 90px; }
+      .couple-divider { display: none; }
+      .input-group { flex-direction: column; }
+      .journey-modal-content { padding: 40px 25px; }
+      .story-chapter { padding-left: 20px; }
+      .story-chapter-title { font-size: 18px; }
+      .story-chapter-text { font-size: 15px; }
+    }
   </style>
 </head>
 <body>
@@ -369,12 +203,27 @@
   <div class="custom-bg"></div>
   <div class="bg-overlay"></div>
 
+  <!-- AUDIO PLAYER (GANTI FILE ID GOOGLE DRIVE) -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://drive.google.com/uc?export=download&id=GANTI_FILE_ID_GOOGLE_DRIVE" type="audio/mpeg">
+    <source src="https://assets.mixkit.co/music/preview/mixkit-wedding-bells-607.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- MUSIC PLAYER BUTTON -->
+  <div class="music-player" id="musicPlayer">
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Play/Pause Musik">
+      <div class="music-ring"></div>
+      <svg id="musicIconPlay" viewBox="0 0 24 24" style="display:none;"><path d="M8 5v14l11-7z"/></svg>
+      <svg id="musicIconPause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+  </div>
+
   <!-- COVER -->
   <div class="cover" id="coverSection">
-    <div class="corner-flower top-left"><img src="https://assets.codepen.io/13471/floral-corner-1.jpg" alt=""></div>
-    <div class="corner-flower top-right"><img src="https://assets.codepen.io/13471/floral-corner-1.jpg" alt=""></div>
-    <div class="corner-flower bottom-left"><img src="https://assets.codepen.io/13471/floral-corner-1.jpg" alt=""></div>
-    <div class="corner-flower bottom-right"><img src="https://assets.codepen.io/13471/floral-corner-1.jpg" alt=""></div>
+    <div class="corner-flower top-left"><img src="https://assets.codepen.io/13471/floral-corner-1.png" alt=""></div>
+    <div class="corner-flower top-right"><img src="https://assets.codepen.io/13471/floral-corner-1.png" alt=""></div>
+    <div class="corner-flower bottom-left"><img src="https://assets.codepen.io/13471/floral-corner-1.png" alt=""></div>
+    <div class="corner-flower bottom-right"><img src="https://assets.codepen.io/13471/floral-corner-1.png" alt=""></div>
 
     <div class="cover-content">
       <div class="cover-label">The Wedding Of</div>
@@ -384,13 +233,12 @@
       <div class="cover-date">27 . 08 . 2026</div>
       
       <div style="width:140px;height:140px;margin:15px auto;border-radius:50%;overflow:hidden;border:3px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,0.2);">
-        <img src="https://img.gt.tc/assets/img/zyth.jpg" style="width:100%;height:100%;object-fit:cover;" alt="Couple">
+        <img src="https://img.gt.tc/assets/img/zyth.png" style="width:100%;height:100%;object-fit:cover;" alt="Couple">
       </div>
 
-      <!-- CUSTOM GUEST NAME -->
       <div id="guestNameWrapper" style="margin-bottom:20px;display:none;">
-         <p style="font-size:12px;color:#1a2a4a;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;">Kepada Yth Bapak/Ibu/Saudara/i</p>
-        <h2 id="guestNameDisplay" style="font-family:'Great Vibes',cursive;font-size:clamp(26px,6vw,34px);color:#1a2a4a;margin:0;text-shadow:0 2px 6px rgba(255,255,255,0.3);"></h2>
+        <p style="font-size:12px;color:rgba(255,255,255,0.8);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;">Kepada Yth Bapak/Ibu/Saudara/i</p>
+        <h2 id="guestNameDisplay" style="font-family:'Great Vibes',cursive;font-size:clamp(26px,6vw,34px);color:#fff;margin:0;text-shadow:0 2px 6px rgba(0,0,0,0.4);"></h2>
       </div>
 
       <button class="btn-open" onclick="openInvitation()">Buka Undangan</button>
@@ -401,13 +249,9 @@
   <div class="main-content" id="mainContent">
     <section class="hero scroll-reveal">
       <div class="cover-label">The Wedding Of</div>
-      <div class="hero-names">Ziya<span class="cover-amp" style="display:inline;font-size:30px;color:var(--gold);margin:0 10px;">&amp;</span>Thohirin</div>
+      <div class="hero-names">Ziya<span style="display:inline;font-size:30px;color:var(--gold);margin:0 10px;">&amp;</span>Thohirin</div>
       <div class="cover-date" style="margin-top:15px;">27 AGUSTUS 2026</div>
-      
-      <!-- TOMBOL BACA KISAH -->
-      <button class="btn-journey" onclick="openJourneyModal()">
-         Baca Kisah Kami
-      </button>
+      <button class="btn-journey" onclick="openJourneyModal()">Baca Kisah Kami</button>
     </section>
 
     <section class="quote-section scroll-reveal">
@@ -415,48 +259,42 @@
       <p class="quote-source">(QS. Ar-Rum: 21)</p>
     </section>
 
-    <!-- COUPLE SECTION (TARGET KUPU-KUPU) -->
     <section class="couple-section scroll-reveal" id="coupleArea">
       <h2 class="section-title">Mempelai</h2>
       <p class="section-subtitle">Insya Allah Akan Melangsungkan Pernikahan</p>
-      
       <div class="couple-container">
         <div class="couple-card">
-          <img src="https://img.gt.tc/assets/img/zy.jpg" class="couple-photo-circle" alt="Ziya">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&q=80" class="couple-photo-circle" alt="Ziya">
           <div class="couple-name">Ziya</div>
-          <p class="couple-parents">Putri dari<br><strong>Bapak Imam & Ibu Mujiatun</strong></p>
+          <p class="couple-parents">Putri dari<br><strong>Bapak ... & Ibu ...</strong></p>
         </div>
-        
         <div class="couple-divider">&amp;</div>
-        
         <div class="couple-card">
-          <img src="https://img.gt.tc/assets/img/th.jpg" class="couple-photo-circle" alt="Thohirin">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&q=80" class="couple-photo-circle" alt="Thohirin">
           <div class="couple-name">Thohirin</div>
-          <p class="couple-parents">Putra dari<br><strong>Bapak Muchsin & Ibu Sulastri</strong></p>
+          <p class="couple-parents">Putra dari<br><strong>Bapak ... & Ibu ...</strong></p>
         </div>
       </div>
     </section>
 
-    <!-- EVENT DETAILS -->
     <section class="scroll-reveal">
       <h2 class="section-title">Detail Acara</h2>
       <div class="event-cards">
         <div class="event-card">
           <div class="event-type">Akad Nikah</div>
           <p>Kamis, 27 Agustus 2026 | 08:00 WIB</p>
-          <p>Rumah Mempelai Putri</p>
-          <a href="https://maps.app.goo.gl/Ms2EDr5aDA955BYM8" class="btn-map">Lihat Peta</a>
+          <p>Masjid Agung Al-Hikmah</p>
+          <a href="#" class="btn-map">Lihat Peta</a>
         </div>
         <div class="event-card">
           <div class="event-type">Resepsi</div>
-          <p>Kamis, 27 Agustus 2026 | 14:00 - Selesai</p>
-          <p>Rumah Mempelai Putri</p>
-          <a href="https://maps.app.goo.gl/Ms2EDr5aDA955BYM8" class="btn-map">Lihat Peta</a>
+          <p>Kamis, 27 Agustus 2026 | 11:00 - Selesai</p>
+          <p>Gedung Serbaguna Kota</p>
+          <a href="#" class="btn-map">Lihat Peta</a>
         </div>
       </div>
     </section>
 
-    <!-- COUNTDOWN -->
     <section class="countdown-section scroll-reveal">
       <h2 class="section-title" style="color:#fff;">Menuju Hari Bahagia</h2>
       <div class="countdown-container">
@@ -467,8 +305,7 @@
       </div>
     </section>
 
-    <!-- CEK NAMA TAMU -->
-     <section class="scroll-reveal">
+    <section class="scroll-reveal">
       <h2 class="section-title">Cek Nama Tamu</h2>
       <div class="glass-panel">
         <div class="input-group">
@@ -479,113 +316,63 @@
       </div>
     </section>
 
-    <!-- KONFIRMASI -->
     <section class="scroll-reveal">
       <h2 class="section-title">Konfirmasi Kehadiran</h2>
       <div class="glass-panel">
-        <div style="margin-bottom:15px;">
-          <label style="display:block;margin-bottom:5px;font-size:12px;font-weight:600;">NAMA</label>
-          <input type="text" class="form-input" id="confNama" style="width:100%;">
-        </div>
-        <div style="margin-bottom:15px;">
-          <label style="display:block;margin-bottom:5px;font-size:12px;font-weight:600;">KEHADIRAN</label>
-          <select class="form-input" id="confStatus" style="width:100%;">
-            <option value="✅ Hadir">Hadir</option>
-            <option value="❌ Tidak Hadir">Tidak Hadir</option>
-          </select>
-        </div>
-        <div style="margin-bottom:15px;">
-          <label style="display:block;margin-bottom:5px;font-size:12px;font-weight:600;">UCAPAN</label>
-          <textarea class="form-input" id="confUcapan" rows="3" style="width:100%;resize:none;"></textarea>
-        </div>
+        <div style="margin-bottom:12px;"><label style="display:block;margin-bottom:4px;font-size:11px;font-weight:600;">NAMA LENGKAP</label><input type="text" class="form-input" id="confNama" style="width:100%;"></div>
+        <div style="margin-bottom:12px;"><label style="display:block;margin-bottom:4px;font-size:11px;font-weight:600;">KEHADIRAN</label><select class="form-input" id="confStatus" style="width:100%;"><option value="Hadir">Hadir</option><option value="Tidak Hadir">Tidak Hadir</option></select></div>
+        <div style="margin-bottom:12px;"><label style="display:block;margin-bottom:4px;font-size:11px;font-weight:600;">UCAPAN / DOA</label><textarea class="form-input" id="confUcapan" rows="3" style="width:100%;resize:none;"></textarea></div>
         <button class="btn-action" style="width:100%;" id="btnSubmit" onclick="kirimKonfirmasi()">Kirim Konfirmasi</button>
-        <div class="result-box" id="submitResult" style="margin-top:15px;"></div>
+        <div class="result-box" id="submitResult" style="margin-top:12px;"></div>
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer scroll-reveal">
       <div class="footer-names">Ziya & Thohirin</div>
       <p>Terima kasih atas doa dan restunya</p>
     </footer>
-      <!-- ==========================================
-         MUSIC PLAYER - GOOGLE DRIVE SUPPORT
-         ========================================== -->
-    <!-- GANTI FILE_ID_GOOGLE_DRIVE dengan ID file MP3 Anda dari Google Drive -->
-    <audio id="bgMusic" loop preload="auto">
-      <source src="https://drive.google.com/uc?export=download&id=1vX46Rj4bmMqzGCXXVppQb2v9s2f-Cw5q" type="audio/mpeg">
-      <!-- Fallback jika Google Drive gagal -->
-      <source src="https://assets.mixkit.co/music/preview/mixkit-wedding-bells-607.mp3" type="audio/mpeg">
-    </audio>
-    
-    <div class="music-player" id="musicPlayer">
-      <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Play/Pause Musik">
-        <div class="music-ring"></div>
-        <svg id="musicIconPlay" viewBox="0 0 24 24" style="display:none;"><path d="M8 5v14l11-7z"/></svg>
-        <svg id="musicIconPause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-      </button>
-    </div>
-    
-    <!-- ==========================================
-         MODAL "THE JOURNEY TO HALAL"
-         ========================================== -->
-    <div class="journey-modal-overlay" id="journeyModal">
-      <div class="journey-modal">
-        <button class="journey-close" onclick="closeJourneyModal()">✕</button>
-        
-        <div class="journey-modal-content">
-          <!-- HEADER -->
-          <div class="journey-header">
-            <div class="journey-subtitle">Our Love Story</div>
-            <h2 class="journey-title">The Journey to Halal</h2>
-            <div class="journey-divider"></div>
-            <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#666;font-style:italic;">
-              "Perjalanan panjang yang Allah takdirkan menuju dermaga halal"
-            </p>
-          </div>
-    
-          <!-- CHAPTER 1 -->
-          <div class="story-chapter">
-            <div class="story-chapter-number">Chapter I</div>
-            <h3 class="story-chapter-title">Awal Bertemu: Di Sela Meja Sekolah</h3>
-            <p class="story-chapter-text">
-              Kisah ini bermula dari ruang kelas yang bersahaja, di sela-sela meja sekolah tempat kita pertama kali saling mengenal. Di usia yang masih begitu ranum, tumbuh sebuah kekaguman yang tertata dalam diam. Kita memilih untuk berkomitmen—bukan dalam ikatan yang melanggar batas, melainkan komitmen dalam doa dan niat baik untuk masa depan. Melewati ego masa remaja dan segala lika-likunya, kita belajar mengarahkan rasa ini agar tetap terjaga.
-            </p>
-          </div>
-    
-          <!-- CHAPTER 2 -->
-          <div class="story-chapter">
-            <div class="story-chapter-number">Chapter II</div>
-            <h3 class="story-chapter-title">Menjalani: Berbeda Tempat Menuntut Ilmu</h3>
-            <p class="story-chapter-text">
-              Waktu membawa kita melangkah ke jenjang pendidikan yang lebih tinggi. Allah menakdirkan kita menempuh jalur yang berbeda; tidak lagi berada di bawah atap sekolah yang sama, tidak ada lagi kedekatan geografis. Di sinilah kesetiaan dan keimanan kita diuji. Jarak melatih kita untuk saling percaya tanpa harus terus mencari tahu. Menjaga hati di tengah perbedaan ruang tidaklah mudah, namun kita memilih saling menjaga dalam sunyi, melangitkan nama satu sama lain di sepertiga malam, dan membiarkan Allah yang menjadi saksi atas komitmen yang tak kasatmata ini.
-            </p>
-          </div>
-    
-          <!-- CHAPTER 3 -->
-          <div class="story-chapter">
-            <div class="story-chapter-number">Chapter III</div>
-            <h3 class="story-chapter-title">Menuju Lamaran: Melewati Ujian dan Prasangka</h3>
-            <p class="story-chapter-text">
-              Selepas menuntaskan pendidikan, ujian dunia nyata yang sesungguhnya pun datang. Lika-liku menuju kedewasaan membawa berbagai ujian—mulai dari kesiapan mental, penyelarasan sudut pandang, hingga keraguan yang sempat hadir. Namun, setiap kali badai ujian itu menyapa, keyakinan bahwa Allah akan menyatukan apa yang baik membuat kita kembali bertahan. Hingga akhirnya, hari yang dinantikan itu tiba. Khitbah (lamaran) suci itu terlaksana atas restu kedua orang tua. Hari penuh haru tersadar akan niat menjaga kisah sejak masa sekolah dulu, kini dijawab Allah dengan jalan yang begitu indah.
-            </p>
-          </div>
-    
-          <!-- CHAPTER 4 -->
-          <div class="story-chapter">
-            <div class="story-chapter-number">Chapter IV</div>
-            <h3 class="story-chapter-title">Menuju Pernikahan: Ikatan Suci di Atas Sajadah</h3>
-            <p class="story-chapter-text">
-              <em>"Atas izin Allah, hari ini perjalanan panjang dan penuh sabar itu akhirnya sampai di dermaga halal. Terima kasih karena telah memilihku, bersabar atas segala kekuranganku, dan gigih berjuang menjaga komitmen ini sejak kita masih di bangku sekolah dahulu. Lelaki yang dulu hanya teman sekolah, kini berdiri di depanku sebagai imamku. InsyaAllah, aku siap mengabdi, berjalan di sampingmu, dan bersama-sama menggapai rida-Nya. Mari membangun rumah tangga yang sakinah, mawaddah, warahmah, dan saling menuntun hingga ke jannah-Nya."</em>
-            </p>
-          </div>
-    
-          <!-- FOOTER -->
-          <div class="journey-footer">
-            <div class="journey-divider"></div>
-            <p class="journey-quote">Ziya & Thohirin</p>
-            <p style="font-size:13px;color:#888;margin-top:10px;letter-spacing:2px;">27 • 08 • 2026</p>
-          </div>
+  </div>
+
+  <!-- MODAL THE JOURNEY TO HALAL -->
+  <div class="journey-modal-overlay" id="journeyModal">
+    <div class="journey-modal">
+      <button class="journey-close" onclick="closeJourneyModal()"></button>
+      <div class="journey-modal-content">
+        <div class="journey-header">
+          <div class="journey-subtitle">Our Love Story</div>
+          <h2 class="journey-title">The Journey to Halal</h2>
+          <div class="journey-divider"></div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#666;font-style:italic;">"Perjalanan panjang yang Allah takdirkan menuju dermaga halal"</p>
+        </div>
+
+        <div class="story-chapter">
+          <div class="story-chapter-number">Chapter I</div>
+          <h3 class="story-chapter-title">Awal Bertemu: Di Sela Meja Sekolah</h3>
+          <p class="story-chapter-text">Kisah ini bermula dari ruang kelas yang bersahaja, di sela-sela meja sekolah tempat kita pertama kali saling mengenal. Di usia yang masih begitu ranum, tumbuh sebuah kekaguman yang tertata dalam diam. Kita memilih untuk berkomitmen—bukan dalam ikatan yang melanggar batas, melainkan komitmen dalam doa dan niat baik untuk masa depan. Melewati ego masa remaja dan segala lika-likunya, kita belajar mengarahkan rasa ini agar tetap terjaga.</p>
+        </div>
+
+        <div class="story-chapter">
+          <div class="story-chapter-number">Chapter II</div>
+          <h3 class="story-chapter-title">Menjalani: Berbeda Tempat Menuntut Ilmu</h3>
+          <p class="story-chapter-text">Waktu membawa kita melangkah ke jenjang pendidikan yang lebih tinggi. Allah menakdirkan kita menempuh jalur yang berbeda; tidak lagi berada di bawah atap sekolah yang sama, tidak ada lagi kedekatan geografis. Di sinilah kesetiaan dan keimanan kita diuji. Jarak melatih kita untuk saling percaya tanpa harus terus mencari tahu. Menjaga hati di tengah perbedaan ruang tidaklah mudah, namun kita memilih saling menjaga dalam sunyi, melangitkan nama satu sama lain di sepertiga malam, dan membiarkan Allah yang menjadi saksi atas komitmen yang tak kasatmata ini.</p>
+        </div>
+
+        <div class="story-chapter">
+          <div class="story-chapter-number">Chapter III</div>
+          <h3 class="story-chapter-title">Menuju Lamaran: Melewati Ujian dan Prasangka</h3>
+          <p class="story-chapter-text">Selepas menuntaskan pendidikan, ujian dunia nyata yang sesungguhnya pun datang. Lika-liku menuju kedewasaan membawa berbagai ujian—mulai dari kesiapan mental, penyelarasan sudut pandang, hingga keraguan yang sempat hadir. Namun, setiap kali badai ujian itu menyapa, keyakinan bahwa Allah akan menyatukan apa yang baik membuat kita kembali bertahan. Hingga akhirnya, hari yang dinantikan itu tiba. Khitbah (lamaran) suci itu terlaksana atas restu kedua orang tua. Hari penuh haru tersadar akan niat menjaga kisah sejak masa sekolah dulu, kini dijawab Allah dengan jalan yang begitu indah.</p>
+        </div>
+
+        <div class="story-chapter">
+          <div class="story-chapter-number">Chapter IV</div>
+          <h3 class="story-chapter-title">Menuju Pernikahan: Ikatan Suci di Atas Sajadah</h3>
+          <p class="story-chapter-text"><em>"Atas izin Allah, hari ini perjalanan panjang dan penuh sabar itu akhirnya sampai di dermaga halal. Terima kasih karena telah memilihku, bersabar atas segala kekuranganku, dan gigih berjuang menjaga komitmen ini sejak kita masih di bangku sekolah dahulu. Lelaki yang dulu hanya teman sekolah, kini berdiri di depanku sebagai imamku. InsyaAllah, aku siap mengabdi, berjalan di sampingmu, dan bersama-sama menggapai rida-Nya. Mari membangun rumah tangga yang sakinah, mawaddah, warahmah, dan saling menuntun hingga ke jannah-Nya."</em></p>
+        </div>
+
+        <div class="journey-footer">
+          <div class="journey-divider"></div>
+          <p class="journey-quote">Ziya & Thohirin</p>
+          <p style="font-size:13px;color:#888;margin-top:10px;letter-spacing:2px;">27 • 08 • 2026</p>
         </div>
       </div>
     </div>
@@ -595,9 +382,11 @@
     // ==========================================
     // KONFIGURASI API - GANTI DENGAN URL ANDA
     // ==========================================
-    const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbweJaLk34K7AB9Us0FCqhEDhfcWfrAalFdoUC6Zyya0iTPZG14FnW2_NLRpptD47QFjOg/exec';
+    const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbzL9rylW9k0TpQooIUE-zNfoSRn-KgOroUvrGyIZfFx/exec';
 
+    // ==========================================
     // 1. INIT GUEST NAME FROM URL (?to=nama)
+    // ==========================================
     document.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
       const guest = params.get('to');
@@ -610,10 +399,99 @@
       }
     });
 
-    // 2. OPEN INVITATION & ANIMATIONS
+    // ==========================================
+    // 2. MUSIC PLAYER LOGIC
+    // ==========================================
+    const bgMusic = document.getElementById('bgMusic');
+    const musicPlayer = document.getElementById('musicPlayer');
+    const musicBtn = document.getElementById('musicBtn');
+    const musicIconPlay = document.getElementById('musicIconPlay');
+    const musicIconPause = document.getElementById('musicIconPause');
+    let isMusicPlaying = false;
+
+    function toggleMusic() {
+      if (isMusicPlaying) {
+        bgMusic.pause();
+        musicIconPlay.style.display = 'block';
+        musicIconPause.style.display = 'none';
+        musicBtn.classList.remove('playing');
+        isMusicPlaying = false;
+      } else {
+        playMusic();
+      }
+    }
+
+    function playMusic() {
+      bgMusic.volume = 0.4;
+      const playPromise = bgMusic.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          musicIconPlay.style.display = 'none';
+          musicIconPause.style.display = 'block';
+          musicBtn.classList.add('playing');
+          isMusicPlaying = true;
+        }).catch(err => {
+          console.log('Autoplay blocked:', err);
+          musicIconPlay.style.display = 'block';
+          musicIconPause.style.display = 'none';
+        });
+      }
+    }
+
+    // ==========================================
+    // 3. JOURNEY MODAL LOGIC
+    // ==========================================
+    function openJourneyModal() {
+      const modal = document.getElementById('journeyModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      
+      const chapters = modal.querySelectorAll('.story-chapter');
+      chapters.forEach((ch, idx) => {
+        setTimeout(() => ch.classList.add('visible'), 300 + (idx * 200));
+      });
+      
+      if (isMusicPlaying) {
+        bgMusic.pause();
+        musicIconPlay.style.display = 'block';
+        musicIconPause.style.display = 'none';
+        musicBtn.classList.remove('playing');
+        isMusicPlaying = false;
+      }
+    }
+
+    function closeJourneyModal() {
+      const modal = document.getElementById('journeyModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      modal.querySelectorAll('.story-chapter').forEach(ch => ch.classList.remove('visible'));
+      playMusic();
+    }
+
+    document.getElementById('journeyModal').addEventListener('click', function(e) {
+      if (e.target === this) closeJourneyModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeJourneyModal();
+    });
+
+    // ==========================================
+    // 4. OPEN INVITATION (AUTO MODAL + MUSIC)
+    // ==========================================
     function openInvitation() {
       document.getElementById('coverSection').style.display = 'none';
       document.getElementById('mainContent').style.display = 'block';
+      
+      // Tampilkan music player & autoplay
+      musicPlayer.style.display = 'block';
+      playMusic();
+      
+      // Auto-open modal setelah 1.5 detik
+      setTimeout(() => {
+        openJourneyModal();
+      }, 1500);
+      
       setTimeout(() => {
         document.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('active'));
         startButterflies();
@@ -639,7 +517,9 @@
       parent.appendChild(b);
     }
 
-    // Countdown
+    // ==========================================
+    // 5. COUNTDOWN TIMER
+    // ==========================================
     function startCountdown() {
       const target = new Date('2026-08-27T08:00:00').getTime();
       setInterval(() => {
@@ -652,7 +532,9 @@
       }, 1000);
     }
 
-    // 3. CEK NAMA VIA FETCH API
+    // ==========================================
+    // 6. CEK NAMA VIA FETCH API
+    // ==========================================
     async function cekNama() {
       const nama = document.getElementById('cekInput').value.trim();
       const btn = document.getElementById('btnCek'), resBox = document.getElementById('cekResult');
@@ -669,7 +551,7 @@
         if (!data.found) { resBox.className = 'result-box not-found'; resBox.innerHTML = '❌ Nama tidak ditemukan.'; }
         else if (data.single) { resBox.className = 'result-box found'; resBox.innerHTML = `<strong>✅ ${data.nama}</strong><br>Status: ${data.status}<br>Ket: ${data.keterangan}`; }
         else {
-          let html = '<div style="font-weight:bold;margin-bottom:8px;"> Kami menemukan beberapa nama:</div>';
+          let html = '<div style="font-weight:bold;margin-bottom:8px;">🔍 Kami menemukan beberapa nama:</div>';
           data.candidates.forEach(c => { html += `<div style="padding:8px;border-bottom:1px solid #eee;">${c.nama} (${c.status})</div>`; });
           resBox.className = 'result-box found'; resBox.innerHTML = html;
         }
@@ -679,7 +561,9 @@
       }
     }
 
-    // 4. KIRIM KONFIRMASI VIA FETCH API
+    // ==========================================
+    // 7. KIRIM KONFIRMASI VIA FETCH API
+    // ==========================================
     async function kirimKonfirmasi() {
       const data = { nama: document.getElementById('confNama').value, status: document.getElementById('confStatus').value, keterangan: document.getElementById('confUcapan').value };
       const btn = document.getElementById('btnSubmit'), resBox = document.getElementById('submitResult');
@@ -696,143 +580,6 @@
       } catch (err) {
         btn.disabled = false; btn.innerText = 'Kirim Konfirmasi'; resBox.className = 'result-box error'; resBox.innerHTML = '⚠️ Gagal mengirim.'; resBox.style.display = 'block';
       }
-    }
-
-    // ==========================================
-    // MUSIC PLAYER - GOOGLE DRIVE AUTOPLAY
-    // ==========================================
-    const bgMusic = document.getElementById('bgMusic');
-    const musicPlayer = document.getElementById('musicPlayer');
-    const musicBtn = document.getElementById('musicBtn');
-    const musicIconPlay = document.getElementById('musicIconPlay');
-    const musicIconPause = document.getElementById('musicIconPause');
-    let isMusicPlaying = false;
-    
-    function toggleMusic() {
-      if (isMusicPlaying) {
-        bgMusic.pause();
-        musicIconPlay.style.display = 'block';
-        musicIconPause.style.display = 'none';
-        musicBtn.classList.remove('playing');
-        isMusicPlaying = false;
-      } else {
-        playMusic();
-      }
-    }
-    
-    function playMusic() {
-      bgMusic.volume = 0.4; // Volume 40% agar tidak kaget
-      const playPromise = bgMusic.play();
-      
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          musicIconPlay.style.display = 'none';
-          musicIconPause.style.display = 'block';
-          musicBtn.classList.add('playing');
-          isMusicPlaying = true;
-        }).catch(err => {
-          console.log('Autoplay blocked:', err);
-          // Tampilkan tombol meski autoplay gagal
-          musicIconPlay.style.display = 'block';
-          musicIconPause.style.display = 'none';
-        });
-      }
-    }
-    
-    // ==========================================
-    // JOURNEY MODAL LOGIC
-    // ==========================================
-    function openJourneyModal() {
-      const modal = document.getElementById('journeyModal');
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Disable scroll background
-      
-      // Animasi chapter satu per satu
-      const chapters = modal.querySelectorAll('.story-chapter');
-      chapters.forEach((ch, idx) => {
-        setTimeout(() => ch.classList.add('visible'), 300 + (idx * 200));
-      });
-      
-      // Pause musik saat modal dibuka (opsional)
-      if (isMusicPlaying) {
-        bgMusic.pause();
-        musicIconPlay.style.display = 'block';
-        musicIconPause.style.display = 'none';
-        musicBtn.classList.remove('playing');
-        isMusicPlaying = false;
-      }
-    }
-    
-    function closeJourneyModal() {
-      const modal = document.getElementById('journeyModal');
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-      
-      // Reset animasi chapter
-      modal.querySelectorAll('.story-chapter').forEach(ch => ch.classList.remove('visible'));
-      
-      // Resume musik
-      playMusic();
-    }
-    
-    // Tutup modal saat klik di luar konten
-    document.getElementById('journeyModal').addEventListener('click', function(e) {
-      if (e.target === this) closeJourneyModal();
-    });
-    
-    // Tutup modal dengan tombol ESC
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeJourneyModal();
-    });
-    
-    // ==========================================
-    // MODIFIKASI FUNGSI openInvitation()
-    // ==========================================
-    function openInvitation() {
-      document.getElementById('coverSection').style.display = 'none';
-      document.getElementById('mainContent').style.display = 'block';
-      
-      // Tampilkan music player & coba autoplay
-      musicPlayer.style.display = 'block';
-      playMusic();
-      
-      // Tampilkan modal otomatis setelah 1 detik
-      setTimeout(() => {
-        openJourneyModal();
-      }, 1000);
-      
-      setTimeout(() => {
-        document.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('active'));
-        startButterflies();
-      }, 100);
-      startCountdown();
-    }
-    
-    // MODIFIKASI FUNGSI openInvitation() YANG SUDAH ADA
-    function openInvitation() {
-      // ... (kode existing untuk hide cover & show main content tetap sama) ...
-      document.getElementById('coverSection').style.display = 'none';
-      document.getElementById('mainContent').style.display = 'block';
-      
-      // ✅ MULAI MUSIK OTOMATIS SAAT UNDANGAN DIBUKA
-      music.volume = 0.5; // Set volume 50% agar tidak kaget
-      music.play().then(() => {
-        isPlaying = true;
-        musicIcon.textContent = '⏸️';
-      }).catch(err => {
-        // Jika autoplay diblokir browser, tampilkan tombol kontrol
-        console.log('Autoplay dicegah browser, menunggu interaksi user');
-      });
-      
-      // ✅ TAMPILKAN TOMBOL KONTROL MUSIK
-      musicBtn.style.display = 'block';
-      
-      // ... (kode existing untuk animasi & countdown tetap sama) ...
-      setTimeout(() => {
-        document.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('active'));
-        startButterflies();
-      }, 100);
-      startCountdown();
     }
   </script>
 </body>
