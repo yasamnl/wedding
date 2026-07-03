@@ -13,27 +13,14 @@
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; background: #f0f0f0; }
-    /* --- BACKGROUND CUSTOM IMAGE (FIXED PARALLAX) --- */
-    .custom-bg {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: -2;
-      /* GANTI URL DI BAWAH DENGAN LINK GAMBAR BACKGROUND ANDA */
-      background-image: url('https://img.gt.tc/assets/img/ziyabg.png'); 
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed; /* Efek Parallax */
-    }
+    
+    /* BACKGROUND */
+    .custom-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; 
+      background-image: url('https://img.gt.tc/assets/img/ziyabg.jpg'); 
+      background-size: cover; background-position: center; background-attachment: fixed; }
+    .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; 
+      background: rgba(255,255,255,0.88); backdrop-filter: blur(2px); }
 
-    /* Overlay putih agar teks tetap terbaca di atas gambar ramai */
-    .bg-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: -1;
-      opacity: 0.1; 
-      background: var(--bg-overlay);
-      backdrop-filter: blur(2px);
-    }
     /* ORNAMEN POJOK */
     .corner-flower { position: absolute; width: 160px; height: 160px; z-index: 10; pointer-events: none; opacity: 0.9; }
     .corner-flower img { width: 100%; height: 100%; object-fit: contain; }
@@ -216,20 +203,30 @@
   <div class="custom-bg"></div>
   <div class="bg-overlay"></div>
 
-  <!-- AUDIO PLAYER (GANTI FILE ID GOOGLE DRIVE) -->
+  <!-- ==========================================
+       AUDIO PLAYER - GITHUB ASSETS FOLDER
+       ========================================== -->
   <audio id="bgMusic" loop preload="auto">
-    <!--<source src="https://drive.google.com/uc?export=download&id=GANTI_FILE_ID_GOOGLE_DRIVE" type="audio/mpeg">-->
-    <source src="https://img.gt.tc/assets/music/mw.mp3" type="audio/mpeg">
+    <!-- GANTI 'wedding-song.mp3' DENGAN NAMA FILE ANDA -->
+    <source src="assets/Mw.mp3" type="audio/mpeg">
+    
+    <!-- Fallback jika file lokal tidak ditemukan -->
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    
+    Browser Anda tidak mendukung audio HTML5.
   </audio>
 
   <!-- MUSIC PLAYER BUTTON -->
   <div class="music-player" id="musicPlayer">
     <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Play/Pause Musik">
       <div class="music-ring"></div>
-      <svg id="musicIconPlay" viewBox="0 0 24 24" style="display:none;"><path d="M8 5v14l11-7z"/></svg>
-      <svg id="musicIconPause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      <svg id="musicIconPlay" viewBox="0 0 24 24" style="display:block;"><path d="M8 5v14l11-7z"/></svg>
+      <svg id="musicIconPause" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
     </button>
   </div>
+
+  <!-- DEBUG PANEL (Hapus setelah fix) -->
+  <div id="audioDebug" style="position: fixed; top: 10px; left: 10px; background: rgba(0,0,0,0.8); color: #fff; padding: 10px; font-size: 11px; z-index: 9999; display: none; max-width: 300px; border-radius: 5px; font-family: monospace;"></div>
 
   <!-- COVER -->
   <div class="cover" id="coverSection">
@@ -246,11 +243,11 @@
       <div class="cover-date">27 . 08 . 2026</div>
       
       <div style="width:140px;height:140px;margin:15px auto;border-radius:50%;overflow:hidden;border:3px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,0.2);">
-        <img src="https://img.gt.tc/assets/img/zyth.jpg" style="width:100%;height:100%;object-fit:cover;" alt="Couple">
+        <img src="https://img.gt.tc/assets/img/zyth.png" style="width:100%;height:100%;object-fit:cover;" alt="Couple">
       </div>
 
       <div id="guestNameWrapper" style="margin-bottom:20px;display:none;">
-        <p style="font-size:12px;color:rgba(0,0,0,0.8);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;">Kepada Yth Bapak/Ibu/Saudara/i</p>
+        <p style="font-size:12px;color:rgba(0,0,0,0);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;">Kepada Yth Bapak/Ibu/Saudara/i</p>
         <h2 id="guestNameDisplay" style="font-family:'Great Vibes',cursive;font-size:clamp(26px,6vw,34px);color:#000000;margin:0;text-shadow:0 2px 6px rgba(0,0,0,0.4);"></h2>
       </div>
 
@@ -272,22 +269,18 @@
       <p class="quote-source">(QS. Ar-Rum: 21)</p>
     </section>
 
-    <!-- COUPLE SECTION (TARGET KUPU-KUPU) -->
     <section class="couple-section scroll-reveal" id="coupleArea">
       <h2 class="section-title">Mempelai</h2>
       <p class="section-subtitle">Insya Allah Akan Melangsungkan Pernikahan</p>
-      
       <div class="couple-container">
         <div class="couple-card">
-          <img src="https://img.gt.tc/assets/img/zy.jpg" class="couple-photo-circle" alt="Ziya">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&q=80" class="couple-photo-circle" alt="Ziya">
           <div class="couple-name">Ziya</div>
           <p class="couple-parents">Putri dari<br><strong>Bapak Imam & Ibu Mujiatun</strong></p>
         </div>
-        
         <div class="couple-divider">&amp;</div>
-        
         <div class="couple-card">
-          <img src="https://img.gt.tc/assets/img/th.jpg" class="couple-photo-circle" alt="Thohirin">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&q=80" class="couple-photo-circle" alt="Thohirin">
           <div class="couple-name">Thohirin</div>
           <p class="couple-parents">Putra dari<br><strong>Bapak Muchsin & Ibu Sulastri</strong></p>
         </div>
@@ -417,43 +410,122 @@
     });
 
     // ==========================================
-    // 2. MUSIC PLAYER LOGIC
+    // 2. MUSIC PLAYER LOGIC - GITHUB ASSETS
     // ==========================================
     const bgMusic = document.getElementById('bgMusic');
     const musicPlayer = document.getElementById('musicPlayer');
     const musicBtn = document.getElementById('musicBtn');
     const musicIconPlay = document.getElementById('musicIconPlay');
     const musicIconPause = document.getElementById('musicIconPause');
+    const audioDebug = document.getElementById('audioDebug');
     let isMusicPlaying = false;
+    let musicReady = false;
+
+    // Debug function
+    function logDebug(msg) {
+      console.log('[Audio]', msg);
+      if (audioDebug && audioDebug.style.display !== 'none') {
+        audioDebug.innerHTML += `<div>${new Date().toLocaleTimeString()}: ${msg}</div>`;
+        audioDebug.scrollTop = audioDebug.scrollHeight;
+      }
+    }
+
+    // Event listeners untuk audio
+    bgMusic.addEventListener('canplaythrough', () => {
+      logDebug('✅ Audio siap diputar');
+      musicReady = true;
+    });
+
+    bgMusic.addEventListener('error', (e) => {
+      logDebug('❌ Error: ' + (bgMusic.error ? bgMusic.error.code : 'Unknown'));
+      console.error('Audio error:', bgMusic.error);
+    });
+
+    bgMusic.addEventListener('waiting', () => logDebug(' Buffering...'));
+    bgMusic.addEventListener('playing', () => logDebug('▶️ Playing'));
+    bgMusic.addEventListener('pause', () => logDebug('⏸️ Paused'));
+
+    // Fungsi play dengan retry
+    async function playMusicWithRetry(maxRetries = 3) {
+      for (let i = 0; i < maxRetries; i++) {
+        try {
+          logDebug(`Attempt ${i + 1}/${maxRetries}`);
+          bgMusic.volume = 0.4;
+          await bgMusic.play();
+          logDebug('✅ Play successful');
+          return true;
+        } catch (err) {
+          logDebug(`❌ Attempt ${i + 1} failed: ${err.name}`);
+          if (i < maxRetries - 1) {
+            await new Promise(resolve => setTimeout(resolve, 500));
+          }
+        }
+      }
+      return false;
+    }
 
     function toggleMusic() {
       if (isMusicPlaying) {
         bgMusic.pause();
         musicIconPlay.style.display = 'block';
         musicIconPause.style.display = 'none';
+        musicBtn.querySelector('.music-ring').style.opacity = '0';
         musicBtn.classList.remove('playing');
         isMusicPlaying = false;
+        logDebug('️ Paused by user');
       } else {
-        playMusic();
-      }
-    }
-
-    function playMusic() {
-      bgMusic.volume = 0.4;
-      const playPromise = bgMusic.play();
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          musicIconPlay.style.display = 'none';
-          musicIconPause.style.display = 'block';
-          musicBtn.classList.add('playing');
-          isMusicPlaying = true;
-        }).catch(err => {
-          console.log('Autoplay blocked:', err);
-          musicIconPlay.style.display = 'block';
-          musicIconPause.style.display = 'none';
+        playMusicWithRetry().then(success => {
+          if (success) {
+            musicIconPlay.style.display = 'none';
+            musicIconPause.style.display = 'block';
+            musicBtn.querySelector('.music-ring').style.opacity = '1';
+            musicBtn.classList.add('playing');
+            isMusicPlaying = true;
+            logDebug('▶️ Playing');
+          } else {
+            logDebug(' All attempts failed');
+          }
         });
       }
     }
+
+    function startMusic() {
+      musicPlayer.style.display = 'block';
+      logDebug('🎵 Starting music...');
+      
+      playMusicWithRetry().then(success => {
+        if (success) {
+          musicIconPlay.style.display = 'none';
+          musicIconPause.style.display = 'block';
+          musicBtn.querySelector('.music-ring').style.opacity = '1';
+          musicBtn.classList.add('playing');
+          isMusicPlaying = true;
+          logDebug('✅ Music started');
+        } else {
+          logDebug('⚠️ Autoplay blocked');
+          musicBtn.style.animation = 'pulse 2s infinite';
+        }
+      });
+    }
+
+    // Fallback: Play on first user interaction
+    document.addEventListener('click', function handleFirstClick() {
+      if (!isMusicPlaying && musicPlayer.style.display === 'block') {
+        logDebug('👆 User interaction detected');
+        playMusicWithRetry().then(success => {
+          if (success) {
+            musicIconPlay.style.display = 'none';
+            musicIconPause.style.display = 'block';
+            musicBtn.querySelector('.music-ring').style.opacity = '1';
+            musicBtn.classList.add('playing');
+            isMusicPlaying = true;
+            musicBtn.style.animation = 'none';
+            logDebug('✅ Music started on click');
+          }
+        });
+      }
+      document.removeEventListener('click', handleFirstClick);
+    }, { once: true });
 
     // ==========================================
     // 3. JOURNEY MODAL LOGIC
@@ -472,8 +544,10 @@
         bgMusic.pause();
         musicIconPlay.style.display = 'block';
         musicIconPause.style.display = 'none';
+        musicBtn.querySelector('.music-ring').style.opacity = '0';
         musicBtn.classList.remove('playing');
         isMusicPlaying = false;
+        logDebug('⏸️ Paused for modal');
       }
     }
 
@@ -482,7 +556,20 @@
       modal.classList.remove('active');
       document.body.style.overflow = '';
       modal.querySelectorAll('.story-chapter').forEach(ch => ch.classList.remove('visible'));
-      playMusic();
+      
+      // Resume music
+      if (!isMusicPlaying) {
+        playMusicWithRetry().then(success => {
+          if (success) {
+            musicIconPlay.style.display = 'none';
+            musicIconPause.style.display = 'block';
+            musicBtn.querySelector('.music-ring').style.opacity = '1';
+            musicBtn.classList.add('playing');
+            isMusicPlaying = true;
+            logDebug('▶️ Resumed after modal');
+          }
+        });
+      }
     }
 
     document.getElementById('journeyModal').addEventListener('click', function(e) {
@@ -494,15 +581,14 @@
     });
 
     // ==========================================
-    // 4. OPEN INVITATION (AUTO MODAL + MUSIC)
+    // 4. OPEN INVITATION
     // ==========================================
     function openInvitation() {
       document.getElementById('coverSection').style.display = 'none';
       document.getElementById('mainContent').style.display = 'block';
       
-      // Tampilkan music player & autoplay
-      musicPlayer.style.display = 'block';
-      playMusic();
+      // Start music
+      startMusic();
       
       // Auto-open modal setelah 1.5 detik
       setTimeout(() => {
