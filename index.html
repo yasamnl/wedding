@@ -3,64 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Wedding of Ziya & Thohirin</title>
+  <title>The Wedding of Ziyadatul Farikha & Muhammad Thohirin</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #1a2a4a;
-      --gold: #c4a882;
-      --text: #2c2c2c;
-    }
+    :root { --primary: #1a2a4a; --gold: #c4a882; --text: #2c2c2c; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; background: #f0f0f0; }
     
-        /* BACKGROUND & OVERLAY */
-    .custom-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; 
-      background-image: url('https://img.gt.tc/assets/img/ziyabg.jpg'); 
-      background-size: cover; background-position: center; background-attachment: fixed; }
-    /* Overlay putih agar teks tetap terbaca di atas gambar ramai */
-    .bg-overlay { 
-    position: fixed; 
-    top: 0; left: 0; 
-    width: 100%; height: 100%; 
-    z-index: -1; 
-    background: rgba(255,255,255,0.88); 
-    backdrop-filter: blur(2px); 
-    opacity: 0.5; /* Ubah nilai ini (0.0 - 1.0) sesuai kebutuhan */
-    transition: opacity 0.8s ease-in-out; 
-    }
+    .custom-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background-image: url('https://img.gt.tc/assets/img/ziyabg.jpg'); background-size: cover; background-position: center; background-attachment: fixed; }
+    .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: rgba(255,255,255,0.88); backdrop-filter: blur(2px); opacity: 0.5; transition: opacity 0.8s ease-in-out; }
 
-    /* ORNAMEN POJOK */
-    .corner-flower { position: absolute; width: 160px; height: 160px; z-index: 10; pointer-events: none; opacity: 0.9; }
-    .corner-flower img { width: 100%; height: 100%; object-fit: contain; }
-    .top-left { top: -15px; left: -15px; } .top-right { top: -15px; right: -15px; transform: scaleX(-1); }
-    .bottom-left { bottom: -15px; left: -15px; transform: scaleY(-1); } .bottom-right { bottom: -15px; right: -15px; transform: scale(-1,-1); }
-
-    /* COVER */
     .cover { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; padding: 40px 20px; }
     .cover-content { z-index: 2; animation: fadeInUp 1.5s ease-out; max-width: 600px; width: 100%; }
     .cover-label { font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--primary); margin-bottom: 15px; font-weight: 600; }
-    .cover-names { font-family: 'Great Vibes', cursive; font-size: clamp(55px, 14vw, 95px); color: var(--primary); line-height: 1; margin: 10px 0; text-shadow: 2px 2px 4px rgba(255,255,255,0.6); }
+    .cover-names { font-family: 'Great Vibes', cursive; font-size: clamp(45px, 12vw, 85px); color: var(--primary); line-height: 1; margin: 10px 0; text-shadow: 2px 2px 4px rgba(255,255,255,0.6); }
     .cover-amp { font-family: 'Great Vibes', cursive; font-size: 35px; color: var(--gold); display: block; margin: 0 auto; }
     .cover-date { font-family: 'Cormorant Garamond', serif; font-size: 20px; letter-spacing: 6px; color: var(--primary); margin-top: 15px; margin-bottom: 30px; font-weight: 700; }
-    
     .btn-open { padding: 15px 45px; background: var(--primary); border: none; color: #fff; font-family: 'Poppins'; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: 0.3s; border-radius: 50px; box-shadow: 0 10px 20px rgba(26,42,74,0.2); }
     .btn-open:hover { background: #2d4a7a; transform: translateY(-3px); }
 
-    /* MAIN CONTENT */
     .main-content { display: none; max-width: 800px; margin: 0 auto; position: relative; z-index: 5; padding-bottom: 50px; }
     section { padding: 60px 20px; position: relative; }
     .section-title { font-family: 'Cormorant Garamond', serif; font-size: 34px; color: var(--primary); margin-bottom: 10px; text-align: center; }
     .section-subtitle { font-size: 12px; color: #666; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 35px; text-align: center; }
 
-    /* HERO & QUOTE */
     .hero { text-align: center; padding: 70px 20px; }
-    .hero-names { font-family: 'Great Vibes', cursive; font-size: clamp(45px, 11vw, 85px); color: var(--primary); line-height: 1.2; }
+    .hero-names { font-family: 'Great Vibes', cursive; font-size: clamp(40px, 10vw, 75px); color: var(--primary); line-height: 1.2; }
     .quote-section { text-align: center; background: rgba(255,255,255,0.6); margin: 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.8); padding: 40px 20px; }
     .quote-text { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-style: italic; color: #444; line-height: 1.8; max-width: 600px; margin: 0 auto; }
     .quote-source { font-size: 13px; color: var(--primary); margin-top: 15px; font-weight: 700; }
 
-    /* COUPLE & BUTTERFLIES */
     .couple-section { overflow: hidden; }
     .couple-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; align-items: center; position: relative; z-index: 2; }
     .couple-card { flex: 1; min-width: 240px; max-width: 280px; text-align: center; background: rgba(255,255,255,0.7); padding: 25px; border-radius: 20px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.5); }
@@ -72,7 +44,6 @@
     .butterfly { position: absolute; width: 25px; height: 25px; background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="%231a2a4a" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C12 2 11 3 11 4C11 5 12 6 12 6C12 6 13 5 13 4C13 3 12 2 12 2ZM8.5 5C7.5 5 6.5 6 6.5 7C6.5 8 7.5 9 8.5 9C9.5 9 10.5 8 10.5 7C10.5 6 9.5 5 8.5 5ZM15.5 5C14.5 5 13.5 6 13.5 7C13.5 8 14.5 9 15.5 9C16.5 9 17.5 8 17.5 7C17.5 6 16.5 5 15.5 5ZM12 7C9 7 6 9 6 12C6 15 9 17 12 17C15 17 18 15 18 12C18 9 15 7 12 7Z"/></svg>'); background-size: contain; background-repeat: no-repeat; opacity: 0.6; pointer-events: none; z-index: 1; animation: fly 12s infinite linear; }
     @keyframes fly { 0% { transform: translate(0,0) rotate(0deg) scale(0.8); opacity:0; } 10% { opacity:0.8; } 25% { transform: translate(40px,-40px) rotate(15deg) scale(1); } 50% { transform: translate(80px,0) rotate(-10deg) scale(0.9); } 75% { transform: translate(40px,40px) rotate(-15deg) scale(1.1); } 90% { opacity:0.8; } 100% { transform: translate(0,0) rotate(0deg) scale(0.8); opacity:0; } }
 
-    /* EVENT & COUNTDOWN */
     .event-cards { display: flex; flex-direction: column; gap: 20px; max-width: 550px; margin: 0 auto; }
     .event-card { background: rgba(255,255,255,0.8); padding: 25px; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.6); backdrop-filter: blur(10px); }
     .event-type { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--primary); margin-bottom: 12px; font-weight: 700; }
@@ -85,7 +56,6 @@
     .countdown-number { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 700; display: block; }
     .countdown-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
 
-    /* FORMS & GLASS PANEL */
     .glass-panel { background: rgba(255,255,255,0.85); padding: 30px 25px; border-radius: 20px; max-width: 480px; margin: 0 auto; border: 1px solid rgba(255,255,255,0.6); backdrop-filter: blur(10px); }
     .input-group { display: flex; gap: 10px; margin-bottom: 15px; }
     .form-input { flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 10px; outline: none; font-family: 'Poppins'; transition: 0.3s; width: 100%; }
@@ -93,6 +63,8 @@
     .btn-action { padding: 12px 20px; background: var(--primary); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 500; transition: 0.3s; white-space: nowrap; }
     .btn-action:hover { background: #2d4a7a; }
     .btn-action:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn-gold { background: var(--gold); }
+    .btn-gold:hover { background: #b0936d; }
 
     .result-box { margin-top: 15px; padding: 15px; border-radius: 10px; display: none; text-align: left; font-size: 14px; line-height: 1.6; }
     .result-box.found { background: #e8f5e9; border: 1px solid #a5d6a7; display: block !important; }
@@ -100,132 +72,68 @@
     .result-box.error { background: #fff3e0; border: 1px solid #ffcc80; display: block !important; animation: shake 0.4s; }
     @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
 
-    /* FOOTER & UTILS */
     .footer { text-align: center; padding: 40px 20px; color: var(--primary); font-size: 13px; }
     .footer-names { font-family: 'Great Vibes', cursive; font-size: 36px; margin-bottom: 8px; }
     @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
     .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
     .scroll-reveal.active { opacity: 1; transform: translateY(0); }
     
-    /* TOMBOL BACA KISAH */
-    .btn-journey {
-      display: inline-block; margin-top: 20px; padding: 12px 30px;
-      background: transparent; border: 1.5px solid var(--primary); color: var(--primary);
-      font-family: 'Poppins', sans-serif; font-size: 12px; letter-spacing: 2px;
-      text-transform: uppercase; cursor: pointer; border-radius: 30px; transition: all 0.3s;
-    }
+    .btn-journey { display: inline-block; margin-top: 20px; padding: 12px 30px; background: transparent; border: 1.5px solid var(--primary); color: var(--primary); font-family: 'Poppins', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-radius: 30px; transition: all 0.3s; }
     .btn-journey:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
 
-    /* ==========================================
-       MODAL "THE JOURNEY TO HALAL"
-       ========================================== */
-    .journey-modal-overlay {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      z-index: 9999; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px);
-      animation: fadeIn 0.5s ease; overflow-y: auto;
-    }
-    .journey-modal-overlay.active { display: flex; align-items: center; justify-content: center; padding: 20px; }
+    /* MODAL STYLES */
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px); animation: fadeIn 0.5s ease; overflow-y: auto; }
+    .modal-overlay.active { display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .modal-box { position: relative; max-width: 600px; width: 100%; max-height: 90vh; background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.4); animation: slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .modal-content { position: relative; z-index: 1; padding: 40px 30px; overflow-y: auto; max-height: 90vh; background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(250,248,244,0.98) 100%); }
+    .modal-close { position: absolute; top: 15px; right: 15px; width: 35px; height: 35px; border-radius: 50%; background: var(--primary); color: #fff; border: none; cursor: pointer; font-size: 16px; z-index: 10; transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
+    .modal-close:hover { background: var(--gold); transform: rotate(90deg); }
+    
+    .bank-info { background: rgba(26,42,74,0.05); border: 1px dashed var(--primary); border-radius: 12px; padding: 20px; margin: 20px 0; text-align: center; }
+    .bank-number { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 700; color: var(--primary); letter-spacing: 1px; margin: 10px 0; }
+    .copy-btn { background: var(--gold); color: #fff; border: none; padding: 6px 15px; border-radius: 20px; font-size: 12px; cursor: pointer; margin-top: 5px; transition: 0.3s; }
+    .copy-btn:hover { background: var(--primary); }
 
-    .journey-modal {
-      position: relative; max-width: 700px; width: 100%; max-height: 90vh;
-      background: #fff; border-radius: 20px; overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
-      animation: slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .journey-modal::before {
-      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background-image: url('https://img.gt.tc/assets/img/zyth.png');
-      background-size: cover; background-position: center;
-      opacity: 0.15; filter: blur(3px); z-index: 0;
-    }
-    .journey-modal-content {
-      position: relative; z-index: 1; padding: 50px 40px;
-      overflow-y: auto; max-height: 90vh;
-      background: linear-gradient(135deg, rgba(255,255,255,0.97) 0%, rgba(250,248,244,0.97) 100%);
-    }
-    .journey-close {
-      position: absolute; top: 15px; right: 15px; width: 40px; height: 40px;
-      border-radius: 50%; background: rgba(26, 42, 74, 0.9); color: #fff;
-      border: none; cursor: pointer; font-size: 18px; z-index: 10;
-      transition: all 0.3s; display: flex; align-items: center; justify-content: center;
-    }
-    .journey-close:hover { background: var(--gold); transform: rotate(90deg); }
-
-    .journey-header { text-align: center; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid rgba(196, 168, 130, 0.3); }
-    .journey-title { font-family: 'Great Vibes', cursive; font-size: clamp(36px, 8vw, 52px); color: var(--primary); margin-bottom: 10px; line-height: 1.1; }
-    .journey-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); font-weight: 600; }
-    .journey-divider { width: 60px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 20px auto; }
-
-    .story-chapter { margin-bottom: 35px; padding-left: 30px; border-left: 2px solid var(--gold); position: relative; opacity: 0; transform: translateX(-20px); transition: all 0.6s ease; }
+    .journey-header { text-align: center; margin-bottom: 30px; }
+    .journey-title { font-family: 'Great Vibes', cursive; font-size: clamp(32px, 7vw, 48px); color: var(--primary); margin-bottom: 10px; }
+    .journey-divider { width: 60px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 15px auto; }
+    .story-chapter { margin-bottom: 25px; padding-left: 25px; border-left: 2px solid var(--gold); position: relative; opacity: 0; transform: translateX(-20px); transition: all 0.6s ease; }
     .story-chapter.visible { opacity: 1; transform: translateX(0); }
-    .story-chapter::before { content: ''; position: absolute; left: -8px; top: 5px; width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--gold); }
-    .story-chapter-number { font-family: 'Cormorant Garamond', serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 8px; }
-    .story-chapter-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--primary); margin-bottom: 12px; font-weight: 700; font-style: italic; }
-    .story-chapter-text { font-family: 'Cormorant Garamond', serif; font-size: 16px; line-height: 1.8; color: #444; text-align: justify; }
+    .story-chapter::before { content: ''; position: absolute; left: -7px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--gold); }
+    .story-chapter-number { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 5px; }
+    .story-chapter-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--primary); margin-bottom: 10px; font-weight: 700; font-style: italic; }
+    .story-chapter-text { font-family: 'Cormorant Garamond', serif; font-size: 15px; line-height: 1.7; color: #444; text-align: justify; }
 
-    .journey-footer { text-align: center; margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(196, 168, 130, 0.3); }
-    .journey-quote { font-family: 'Great Vibes', cursive; font-size: 24px; color: var(--primary); font-style: italic; }
-
-    /* ==========================================
-       MUSIC PLAYER ELEGANT
-       ========================================== */
     .music-player { position: fixed; bottom: 25px; right: 25px; z-index: 998; display: none; }
-    .music-btn {
-      width: 50px; height: 50px; border-radius: 50%; background: var(--primary);
-      border: 2px solid #fff; color: #fff; cursor: pointer;
-      box-shadow: 0 6px 20px rgba(26,42,74,0.4);
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.3s; position: relative; overflow: hidden;
-    }
+    .music-btn { width: 50px; height: 50px; border-radius: 50%; background: var(--primary); border: 2px solid #fff; color: #fff; cursor: pointer; box-shadow: 0 6px 20px rgba(26,42,74,0.4); display: flex; align-items: center; justify-content: center; transition: all 0.3s; position: relative; overflow: hidden; }
     .music-btn:hover { transform: scale(1.1); background: var(--gold); }
     .music-btn.playing { animation: pulse 2s infinite; }
     .music-btn svg { width: 20px; height: 20px; fill: #fff; }
-    .music-ring {
-      position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px;
-      border: 2px dashed rgba(255,255,255,0.5); border-radius: 50%;
-      animation: spinRing 8s linear infinite; opacity: 0; transition: opacity 0.3s;
-    }
+    .music-ring { position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px; border: 2px dashed rgba(255,255,255,0.5); border-radius: 50%; animation: spinRing 8s linear infinite; opacity: 0; transition: opacity 0.3s; }
     .music-btn.playing .music-ring { opacity: 1; }
     @keyframes pulse { 0%,100%{box-shadow:0 6px 20px rgba(26,42,74,0.4)} 50%{box-shadow:0 6px 30px rgba(196,168,130,0.6)} }
     @keyframes spinRing { to { transform: rotate(360deg); } }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
-    .journey-modal-content::-webkit-scrollbar { width: 6px; }
-    .journey-modal-content::-webkit-scrollbar-track { background: rgba(196,168,130,0.1); }
-    .journey-modal-content::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
-
     @media (max-width: 600px) {
-      .corner-flower { width: 90px; height: 90px; }
       .couple-divider { display: none; }
       .input-group { flex-direction: column; }
-      .journey-modal-content { padding: 40px 25px; }
+      .modal-content { padding: 30px 20px; }
       .story-chapter { padding-left: 20px; }
-      .story-chapter-title { font-size: 18px; }
-      .story-chapter-text { font-size: 15px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- BACKGROUND -->
   <div class="custom-bg"></div>
   <div class="bg-overlay"></div>
 
-  <!-- ==========================================
-       AUDIO PLAYER - GITHUB ASSETS FOLDER
-       ========================================== -->
   <audio id="bgMusic" loop preload="auto">
-    <!-- GANTI 'wedding-song.mp3' DENGAN NAMA FILE ANDA -->
     <source src="assets/Mw.mp3" type="audio/mpeg">
-    
-    <!-- Fallback jika file lokal tidak ditemukan -->
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    
-    Browser Anda tidak mendukung audio HTML5.
   </audio>
 
-  <!-- MUSIC PLAYER BUTTON -->
   <div class="music-player" id="musicPlayer">
     <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Play/Pause Musik">
       <div class="music-ring"></div>
@@ -234,21 +142,13 @@
     </button>
   </div>
 
-  <!-- DEBUG PANEL (Hapus setelah fix) -->
-  <div id="audioDebug" style="position: fixed; top: 10px; left: 10px; background: rgba(0,0,0,0.8); color: #fff; padding: 10px; font-size: 11px; z-index: 9999; display: none; max-width: 300px; border-radius: 5px; font-family: monospace;"></div>
-
   <!-- COVER -->
   <div class="cover" id="coverSection">
-    <div class="corner-flower top-left"><img src="https://assets.codepen.io/13471/floral-corner-1.png" alt=""></div>
-    <div class="corner-flower top-right"><img src="https://assets.codepen.io/13471/floral-corner-1.png" alt=""></div>
-    <div class="corner-flower bottom-left"><img src="https://assets.codepen.io/13471/floral-corner-1.png" alt=""></div>
-    <div class="corner-flower bottom-right"><img src="https://assets.codepen.io/13471/floral-corner-1.png" alt=""></div>
-
     <div class="cover-content">
       <div class="cover-label">The Wedding Of</div>
-      <div class="cover-names">Ziya</div>
+      <div class="cover-names">Ziyadatul Farikha</div>
       <span class="cover-amp">&amp;</span>
-      <div class="cover-names">Thohirin</div>
+      <div class="cover-names">Muhammad Thohirin</div>
       <div class="cover-date">27 . 08 . 2026</div>
       
       <div style="width:140px;height:140px;margin:15px auto;border-radius:50%;overflow:hidden;border:3px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,0.2);">
@@ -268,7 +168,7 @@
   <div class="main-content" id="mainContent">
     <section class="hero scroll-reveal">
       <div class="cover-label">The Wedding Of</div>
-      <div class="hero-names">Ziya<span style="display:inline;font-size:30px;color:var(--gold);margin:0 10px;">&amp;</span>Thohirin</div>
+      <div class="hero-names">Ziyadatul Farikha<span style="display:inline;font-size:30px;color:var(--gold);margin:0 10px;">&amp;</span>Muhammad Thohirin</div>
       <div class="cover-date" style="margin-top:15px;">27 AGUSTUS 2026</div>
       <button class="btn-journey" onclick="openJourneyModal()">Baca Kisah Kami</button>
     </section>
@@ -283,14 +183,14 @@
       <p class="section-subtitle">Insya Allah Akan Melangsungkan Pernikahan</p>
       <div class="couple-container">
         <div class="couple-card">
-          <img src="https://img.gt.tc/assets/img/zy.jpg" class="couple-photo-circle" alt="Ziya">
-          <div class="couple-name">Ziya</div>
+          <img src="https://img.gt.tc/assets/img/zy.jpg" class="couple-photo-circle" alt="Ziyadatul Farikha">
+          <div class="couple-name">Ziyadatul Farikha</div>
           <p class="couple-parents">Putri dari<br><strong>Bapak Imam & Ibu Mujiatun</strong></p>
         </div>
         <div class="couple-divider">&amp;</div>
         <div class="couple-card">
-          <img src="https://img.gt.tc/assets/img/th.jpg" class="couple-photo-circle" alt="Thohirin">
-          <div class="couple-name">Thohirin</div>
+          <img src="https://img.gt.tc/assets/img/th.jpg" class="couple-photo-circle" alt="Muhammad Thohirin">
+          <div class="couple-name">Muhammad Thohirin</div>
           <p class="couple-parents">Putra dari<br><strong>Bapak Muchsin & Ibu Sulastri</strong></p>
         </div>
       </div>
@@ -303,13 +203,13 @@
           <div class="event-type">Akad Nikah</div>
           <p>Kamis, 27 Agustus 2026 | 08:00 WIB</p>
           <p>Rumah Mempelai Wanita</p>
-          <a href="https://maps.app.goo.gl/EHFn1ax3JZN7D2sv5" class="btn-map">Lihat Peta</a>
+          <a href="https://maps.app.goo.gl/EHFn1ax3JZN7D2sv5" class="btn-map" target="_blank">Lihat Peta</a>
         </div>
         <div class="event-card">
           <div class="event-type">Resepsi</div>
           <p>Kamis, 27 Agustus 2026 | 11:00 - Selesai</p>
           <p>Rumah Mempelai Wanita</p>
-          <a href="https://maps.app.goo.gl/EHFn1ax3JZN7D2sv5" class="btn-map">Lihat Peta</a>
+          <a href="https://maps.app.goo.gl/EHFn1ax3JZN7D2sv5" class="btn-map" target="_blank">Lihat Peta</a>
         </div>
       </div>
     </section>
@@ -322,6 +222,13 @@
         <div class="countdown-item"><span class="countdown-number" id="cd-minutes">00</span><div class="countdown-label">Menit</div></div>
         <div class="countdown-item"><span class="countdown-number" id="cd-seconds">00</span><div class="countdown-label">Detik</div></div>
       </div>
+    </section>
+
+    <!-- MODAL PEMICU AMPLOP DIGITAL -->
+    <section class="scroll-reveal" style="text-align: center;">
+      <h2 class="section-title">Tanda Kasih</h2>
+      <p class="section-subtitle">Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi kado secara cashless.</p>
+      <button class="btn-action btn-gold" style="padding: 15px 40px; font-size: 14px; border-radius: 30px;" onclick="openPaymentModal()">💌 Kirim Amplop Digital</button>
     </section>
 
     <section class="scroll-reveal">
@@ -347,65 +254,83 @@
     </section>
 
     <footer class="footer scroll-reveal">
-      <div class="footer-names">Ziya & Thohirin</div>
+      <div class="footer-names">Ziyadatul Farikha & Muhammad Thohirin</div>
       <p>Terima kasih atas doa dan restunya</p>
     </footer>
   </div>
 
   <!-- MODAL THE JOURNEY TO HALAL -->
-  <div class="journey-modal-overlay" id="journeyModal">
-    <div class="journey-modal">
-      <button class="journey-close" onclick="closeJourneyModal()">x</button>
-      <div class="journey-modal-content">
+  <div class="modal-overlay" id="journeyModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeJourneyModal()">✕</button>
+      <div class="modal-content">
         <div class="journey-header">
-          <div class="journey-subtitle">Our Love Story</div>
+          <div style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;">Our Love Story</div>
           <h2 class="journey-title">The Journey to Halal</h2>
           <div class="journey-divider"></div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#666;font-style:italic;">"Perjalanan panjang yang Allah takdirkan menuju dermaga halal"</p>
         </div>
+        <div class="story-chapter"><div class="story-chapter-number">Chapter I</div><h3 class="story-chapter-title">Awal Bertemu: Di Sela Meja Sekolah</h3><p class="story-chapter-text">Kisah ini bermula dari ruang kelas yang bersahaja, di sela-sela meja sekolah tempat kita pertama kali saling mengenal. Di usia yang masih begitu ranum, tumbuh sebuah kekaguman yang tertata dalam diam. Kita memilih untuk berkomitmen—bukan dalam ikatan yang melanggar batas, melainkan komitmen dalam doa dan niat baik untuk masa depan.</p></div>
+        <div class="story-chapter"><div class="story-chapter-number">Chapter II</div><h3 class="story-chapter-title">Menjalani: Berbeda Tempat Menuntut Ilmu</h3><p class="story-chapter-text">Waktu membawa kita melangkah ke jenjang pendidikan yang lebih tinggi. Allah menakdirkan kita menempuh jalur yang berbeda. Di sinilah kesetiaan dan keimanan kita diuji. Jarak melatih kita untuk saling percaya tanpa harus terus mencari tahu. Kita memilih saling menjaga dalam sunyi, melangitkan nama satu sama lain di sepertiga malam.</p></div>
+        <div class="story-chapter"><div class="story-chapter-number">Chapter III</div><h3 class="story-chapter-title">Menuju Lamaran: Melewati Ujian</h3><p class="story-chapter-text">Lika-liku menuju kedewasaan membawa berbagai ujian. Namun, setiap kali badai ujian itu menyapa, keyakinan bahwa Allah akan menyatukan apa yang baik membuat kita kembali bertahan. Hingga akhirnya, Khitbah suci itu terlaksana atas restu kedua orang tua.</p></div>
+        <div class="story-chapter"><div class="story-chapter-number">Chapter IV</div><h3 class="story-chapter-title">Menuju Pernikahan: Ikatan Suci</h3><p class="story-chapter-text"><em>"Atas izin Allah, perjalanan panjang ini akhirnya sampai di dermaga halal. Lelaki yang dulu hanya teman sekolah, kini berdiri di depanku sebagai imamku. InsyaAllah, aku siap mengabdi, berjalan di sampingmu, dan bersama-sama menggapai rida-Nya."</em></p></div>
+      </div>
+    </div>
+  </div>
 
-        <div class="story-chapter">
-          <div class="story-chapter-number">Chapter I</div>
-          <h3 class="story-chapter-title">Awal Bertemu: Di Sela Meja Sekolah</h3>
-          <p class="story-chapter-text">Kisah ini bermula dari ruang kelas yang bersahaja, di sela-sela meja sekolah tempat kita pertama kali saling mengenal. Di usia yang masih begitu ranum, tumbuh sebuah kekaguman yang tertata dalam diam. Kita memilih untuk berkomitmen—bukan dalam ikatan yang melanggar batas, melainkan komitmen dalam doa dan niat baik untuk masa depan. Melewati ego masa remaja dan segala lika-likunya, kita belajar mengarahkan rasa ini agar tetap terjaga.</p>
-        </div>
-
-        <div class="story-chapter">
-          <div class="story-chapter-number">Chapter II</div>
-          <h3 class="story-chapter-title">Menjalani: Berbeda Tempat Menuntut Ilmu</h3>
-          <p class="story-chapter-text">Waktu membawa kita melangkah ke jenjang pendidikan yang lebih tinggi. Allah menakdirkan kita menempuh jalur yang berbeda; tidak lagi berada di bawah atap sekolah yang sama, tidak ada lagi kedekatan geografis. Di sinilah kesetiaan dan keimanan kita diuji. Jarak melatih kita untuk saling percaya tanpa harus terus mencari tahu. Menjaga hati di tengah perbedaan ruang tidaklah mudah, namun kita memilih saling menjaga dalam sunyi, melangitkan nama satu sama lain di sepertiga malam, dan membiarkan Allah yang menjadi saksi atas komitmen yang tak kasatmata ini.</p>
-        </div>
-
-        <div class="story-chapter">
-          <div class="story-chapter-number">Chapter III</div>
-          <h3 class="story-chapter-title">Menuju Lamaran: Melewati Ujian dan Prasangka</h3>
-          <p class="story-chapter-text">Selepas menuntaskan pendidikan, ujian dunia nyata yang sesungguhnya pun datang. Lika-liku menuju kedewasaan membawa berbagai ujian—mulai dari kesiapan mental, penyelarasan sudut pandang, hingga keraguan yang sempat hadir. Namun, setiap kali badai ujian itu menyapa, keyakinan bahwa Allah akan menyatukan apa yang baik membuat kita kembali bertahan. Hingga akhirnya, hari yang dinantikan itu tiba. Khitbah (lamaran) suci itu terlaksana atas restu kedua orang tua. Hari penuh haru tersadar akan niat menjaga kisah sejak masa sekolah dulu, kini dijawab Allah dengan jalan yang begitu indah.</p>
-        </div>
-
-        <div class="story-chapter">
-          <div class="story-chapter-number">Chapter IV</div>
-          <h3 class="story-chapter-title">Menuju Pernikahan: Ikatan Suci di Atas Sajadah</h3>
-          <p class="story-chapter-text"><em>"Atas izin Allah, hari ini perjalanan panjang dan penuh sabar itu akhirnya sampai di dermaga halal. Terima kasih karena telah memilihku, bersabar atas segala kekuranganku, dan gigih berjuang menjaga komitmen ini sejak kita masih di bangku sekolah dahulu. Lelaki yang dulu hanya teman sekolah, kini berdiri di depanku sebagai imamku. InsyaAllah, aku siap mengabdi, berjalan di sampingmu, dan bersama-sama menggapai rida-Nya. Mari membangun rumah tangga yang sakinah, mawaddah, warahmah, dan saling menuntun hingga ke jannah-Nya."</em></p>
-        </div>
-
-        <div class="journey-footer">
+  <!-- MODAL AMPLOP DIGITAL / HADIAH -->
+  <div class="modal-overlay" id="paymentModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closePaymentModal()">✕</button>
+      <div class="modal-content">
+        <div class="journey-header">
+          <h2 class="journey-title">Amplop Digital</h2>
           <div class="journey-divider"></div>
-          <p class="journey-quote">Ziya & Thohirin</p>
-          <p style="font-size:13px;color:#888;margin-top:10px;letter-spacing:2px;">27 • 08 • 2026</p>
+          <p style="font-size:14px;color:#666;">Terima kasih atas kebaikan dan doa restunya</p>
+        </div>
+
+        <!-- Info Bank -->
+        <div class="bank-info">
+          <p style="font-size:13px;color:#666;margin-bottom:5px;">Transfer Bank</p>
+          <div class="bank-number" id="rekBank">318101018574533</div>
+          <p style="font-size:14px;font-weight:600;color:var(--primary);">a.n. Ziyadatul Farikha</p>
+          <button class="copy-btn" onclick="copyToClipboard('rekBank')">Salin Nomor Rekening</button>
+        </div>
+
+        <!-- Info E-Wallet -->
+        <div class="bank-info">
+          <p style="font-size:13px;color:#666;margin-bottom:5px;">ShopeePay</p>
+          <div class="bank-number" id="rekEwallet">085704844060</div>
+          <p style="font-size:14px;font-weight:600;color:var(--primary);">a.n. ziyada</p>
+          <button class="copy-btn" onclick="copyToClipboard('rekEwallet')">Salin Nomor ShopeePay</button>
+        </div>
+
+        <!-- Form Upload Bukti -->
+        <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--primary);margin-bottom:15px;text-align:center;">Konfirmasi Hadiah</h3>
+          <div style="margin-bottom:12px;">
+            <label style="display:block;margin-bottom:4px;font-size:11px;font-weight:600;">NAMA PENGIRIM</label>
+            <input type="text" class="form-input" id="hadiahNama" placeholder="Nama Anda">
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block;margin-bottom:4px;font-size:11px;font-weight:600;">NOMINAL (Opsional)</label>
+            <input type="text" class="form-input" id="hadiahNominal" placeholder="Contoh: 100.000">
+          </div>
+          <div style="margin-bottom:15px;">
+            <label style="display:block;margin-bottom:4px;font-size:11px;font-weight:600;">BUKTI TRANSFER</label>
+            <input type="file" class="form-input" id="hadiahFile" accept="image/*" onchange="handleFileSelect(event)" style="padding: 8px;">
+            <p id="fileNameDisplay" style="font-size:12px;color:var(--gold);margin-top:5px;"></p>
+          </div>
+          <button class="btn-action btn-gold" style="width:100%;" id="btnKirimHadiah" onclick="kirimHadiah()">Kirim Konfirmasi Hadiah</button>
+          <div class="result-box" id="hadiahResult" style="margin-top:12px;"></div>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    // ==========================================
-    // KONFIGURASI API - GANTI DENGAN URL ANDA
-    // ==========================================
     const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbweJaLk34K7AB9Us0FCqhEDhfcWfrAalFdoUC6Zyya0iTPZG14FnW2_NLRpptD47QFjOg/exec';
 
-    // ==========================================
-    // 1. INIT GUEST NAME FROM URL (?to=nama)
-    // ==========================================
+    // 1. INIT GUEST NAME
     document.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
       const guest = params.get('to');
@@ -418,169 +343,94 @@
       }
     });
 
-    // ==========================================
-    // 2. MUSIC PLAYER LOGIC - GITHUB ASSETS
-    // ==========================================
+    // 2. MUSIC PLAYER
     const bgMusic = document.getElementById('bgMusic');
     const musicPlayer = document.getElementById('musicPlayer');
     const musicBtn = document.getElementById('musicBtn');
     const musicIconPlay = document.getElementById('musicIconPlay');
     const musicIconPause = document.getElementById('musicIconPause');
-    const audioDebug = document.getElementById('audioDebug');
     let isMusicPlaying = false;
-    let musicReady = false;
-
-    // Debug function
-    function logDebug(msg) {
-      console.log('[Audio]', msg);
-      if (audioDebug && audioDebug.style.display !== 'none') {
-        audioDebug.innerHTML += `<div>${new Date().toLocaleTimeString()}: ${msg}</div>`;
-        audioDebug.scrollTop = audioDebug.scrollHeight;
-      }
-    }
-
-    // Event listeners untuk audio
-    bgMusic.addEventListener('canplaythrough', () => {
-      logDebug('✅ Audio siap diputar');
-      musicReady = true;
-    });
-
-    bgMusic.addEventListener('error', (e) => {
-      logDebug('❌ Error: ' + (bgMusic.error ? bgMusic.error.code : 'Unknown'));
-      console.error('Audio error:', bgMusic.error);
-    });
-
-    bgMusic.addEventListener('waiting', () => logDebug(' Buffering...'));
-    bgMusic.addEventListener('playing', () => logDebug('▶️ Playing'));
-    bgMusic.addEventListener('pause', () => logDebug('⏸️ Paused'));
-
-    // Fungsi play dengan retry
-    async function playMusicWithRetry(maxRetries = 3) {
-      for (let i = 0; i < maxRetries; i++) {
-        try {
-          logDebug(`Attempt ${i + 1}/${maxRetries}`);
-          bgMusic.volume = 0.4;
-          await bgMusic.play();
-          logDebug('✅ Play successful');
-          return true;
-        } catch (err) {
-          logDebug(`❌ Attempt ${i + 1} failed: ${err.name}`);
-          if (i < maxRetries - 1) {
-            await new Promise(resolve => setTimeout(resolve, 500));
-          }
-        }
-      }
-      return false;
-    }
 
     function toggleMusic() {
       if (isMusicPlaying) {
         bgMusic.pause();
-        musicIconPlay.style.display = 'block';
-        musicIconPause.style.display = 'none';
+        musicIconPlay.style.display = 'block'; musicIconPause.style.display = 'none';
         musicBtn.querySelector('.music-ring').style.opacity = '0';
         musicBtn.classList.remove('playing');
         isMusicPlaying = false;
-        logDebug('️ Paused by user');
       } else {
-        playMusicWithRetry().then(success => {
-          if (success) {
-            musicIconPlay.style.display = 'none';
-            musicIconPause.style.display = 'block';
-            musicBtn.querySelector('.music-ring').style.opacity = '1';
-            musicBtn.classList.add('playing');
-            isMusicPlaying = true;
-            logDebug('▶️ Playing');
-          } else {
-            logDebug(' All attempts failed');
-          }
-        });
+        bgMusic.volume = 0.4;
+        bgMusic.play().then(() => {
+          musicIconPlay.style.display = 'none'; musicIconPause.style.display = 'block';
+          musicBtn.querySelector('.music-ring').style.opacity = '1';
+          musicBtn.classList.add('playing');
+          isMusicPlaying = true;
+        }).catch(() => {});
       }
     }
 
     function startMusic() {
       musicPlayer.style.display = 'block';
-      logDebug('🎵 Starting music...');
-      
-      playMusicWithRetry().then(success => {
-        if (success) {
-          musicIconPlay.style.display = 'none';
-          musicIconPause.style.display = 'block';
-          musicBtn.querySelector('.music-ring').style.opacity = '1';
-          musicBtn.classList.add('playing');
-          isMusicPlaying = true;
-          logDebug('✅ Music started');
-        } else {
-          logDebug('⚠️ Autoplay blocked');
-          musicBtn.style.animation = 'pulse 2s infinite';
-        }
+      bgMusic.volume = 0.4;
+      bgMusic.play().then(() => {
+        musicIconPlay.style.display = 'none'; musicIconPause.style.display = 'block';
+        musicBtn.querySelector('.music-ring').style.opacity = '1';
+        musicBtn.classList.add('playing');
+        isMusicPlaying = true;
+      }).catch(() => {
+        musicBtn.style.animation = 'pulse 2s infinite';
       });
     }
 
-    // Fallback: Play on first user interaction
     document.addEventListener('click', function handleFirstClick() {
       if (!isMusicPlaying && musicPlayer.style.display === 'block') {
-        logDebug('👆 User interaction detected');
-        playMusicWithRetry().then(success => {
-          if (success) {
-            musicIconPlay.style.display = 'none';
-            musicIconPause.style.display = 'block';
-            musicBtn.querySelector('.music-ring').style.opacity = '1';
-            musicBtn.classList.add('playing');
-            isMusicPlaying = true;
-            musicBtn.style.animation = 'none';
-            logDebug('✅ Music started on click');
-          }
+        bgMusic.play().then(() => {
+          musicIconPlay.style.display = 'none'; musicIconPause.style.display = 'block';
+          musicBtn.querySelector('.music-ring').style.opacity = '1';
+          musicBtn.classList.add('playing');
+          isMusicPlaying = true;
+          musicBtn.style.animation = 'none';
         });
       }
       document.removeEventListener('click', handleFirstClick);
     }, { once: true });
 
-    // ==========================================
-// 3. JOURNEY MODAL LOGIC (MUSIC TETAP PLAY)
-// ==========================================
-function openJourneyModal() {
-  const modal = document.getElementById('journeyModal');
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
-  
-  // Animasi chapter satu per satu
-  const chapters = modal.querySelectorAll('.story-chapter');
-  chapters.forEach((ch, idx) => {
-    setTimeout(() => ch.classList.add('visible'), 300 + (idx * 200));
-  });
-  
-  // ✅ MUSIK TETAP PLAY
-  logDebug('🎵 Modal opened, music continues playing');
-}
+    // 3. MODAL LOGIC
+    function openJourneyModal() {
+      document.getElementById('journeyModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+      document.querySelectorAll('#journeyModal .story-chapter').forEach((ch, idx) => {
+        setTimeout(() => ch.classList.add('visible'), 300 + (idx * 200));
+      });
+    }
+    function closeJourneyModal() {
+      document.getElementById('journeyModal').classList.remove('active');
+      document.body.style.overflow = '';
+      document.querySelectorAll('#journeyModal .story-chapter').forEach(ch => ch.classList.remove('visible'));
+    }
 
-function closeJourneyModal() {
-  const modal = document.getElementById('journeyModal');
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
-  
-  // Reset animasi chapter
-  modal.querySelectorAll('.story-chapter').forEach(ch => ch.classList.remove('visible'));
-  
-  // ✅ MUSIK TETAP PLAY
-  logDebug('🎵 Modal closed, music still playing');
-}
+    function openPaymentModal() {
+      document.getElementById('paymentModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closePaymentModal() {
+      document.getElementById('paymentModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
 
-    // ==========================================
+    function copyToClipboard(elementId) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Nomor berhasil disalin!');
+      });
+    }
+
     // 4. OPEN INVITATION
-    // ==========================================
     function openInvitation() {
       document.getElementById('coverSection').style.display = 'none';
       document.getElementById('mainContent').style.display = 'block';
-      
-      // Start music
       startMusic();
-      
-      // Auto-open modal setelah 1.5 detik
-      setTimeout(() => {
-        openJourneyModal();
-      }, 1500);
-      
+      setTimeout(() => { openJourneyModal(); }, 1500);
       setTimeout(() => {
         document.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('active'));
         startButterflies();
@@ -588,27 +438,21 @@ function closeJourneyModal() {
       startCountdown();
     }
 
-    // Scroll Observer
     const observer = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('active')), { threshold: 0.1 });
     window.onload = () => document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
-    // Butterfly Generator
     function startButterflies() {
       const container = document.getElementById('coupleArea');
       if (!container) return;
-      for (let i = 0; i < 6; i++) createButterfly(container, i * 2000);
-    }
-    function createButterfly(parent, delay) {
-      const b = document.createElement('div'); b.className = 'butterfly';
-      b.style.left = (Math.random() * 80 + 10) + '%'; b.style.top = (Math.random() * 80 + 10) + '%';
-      b.style.animationDelay = (delay / 1000) + 's';
-      const size = 20 + Math.random() * 20; b.style.width = size + 'px'; b.style.height = size + 'px';
-      parent.appendChild(b);
+      for (let i = 0; i < 6; i++) {
+        const b = document.createElement('div'); b.className = 'butterfly';
+        b.style.left = (Math.random() * 80 + 10) + '%'; b.style.top = (Math.random() * 80 + 10) + '%';
+        b.style.animationDelay = (i * 2000 / 1000) + 's';
+        const size = 20 + Math.random() * 20; b.style.width = size + 'px'; b.style.height = size + 'px';
+        container.appendChild(b);
+      }
     }
 
-    // ==========================================
-    // 5. COUNTDOWN TIMER
-    // ==========================================
     function startCountdown() {
       const target = new Date('2026-08-27T08:00:00').getTime();
       setInterval(() => {
@@ -621,22 +465,17 @@ function closeJourneyModal() {
       }, 1000);
     }
 
-    // ==========================================
-    // 6. CEK NAMA VIA FETCH API
-    // ==========================================
+    // 5. CEK NAMA
     async function cekNama() {
       const nama = document.getElementById('cekInput').value.trim();
       const btn = document.getElementById('btnCek'), resBox = document.getElementById('cekResult');
       resBox.className = 'result-box'; resBox.style.display = 'none';
-      
       if (!nama) { resBox.className = 'result-box error'; resBox.innerHTML = '⚠️ Masukkan nama dulu!'; resBox.style.display = 'block'; return; }
-      
       btn.disabled = true; btn.innerText = '...';
       try {
         const response = await fetch(`${GAS_API_URL}?action=cekNama&nama=${encodeURIComponent(nama)}`);
         const data = await response.json();
         btn.disabled = false; btn.innerText = 'Cek';
-        
         if (!data.found) { resBox.className = 'result-box not-found'; resBox.innerHTML = '❌ Nama tidak ditemukan.'; }
         else if (data.single) { resBox.className = 'result-box found'; resBox.innerHTML = `<strong>✅ ${data.nama}</strong><br>Status: ${data.status}<br>Ket: ${data.keterangan}`; }
         else {
@@ -650,17 +489,17 @@ function closeJourneyModal() {
       }
     }
 
-    // ==========================================
-    // 7. KIRIM KONFIRMASI VIA FETCH API
-    // ==========================================
+    // 6. KIRIM KONFIRMASI
     async function kirimKonfirmasi() {
-      const data = { nama: document.getElementById('confNama').value, status: document.getElementById('confStatus').value, keterangan: document.getElementById('confUcapan').value };
+      const data = { action: 'simpan', nama: document.getElementById('confNama').value, status: document.getElementById('confStatus').value, keterangan: document.getElementById('confUcapan').value };
       const btn = document.getElementById('btnSubmit'), resBox = document.getElementById('submitResult');
       if (!data.nama) { alert('Nama wajib diisi'); return; }
-      
       btn.disabled = true; btn.innerText = 'Mengirim...';
       try {
-        const response = await fetch(`${GAS_API_URL}?action=simpan&nama=${encodeURIComponent(data.nama)}&status=${encodeURIComponent(data.status)}&keterangan=${encodeURIComponent(data.keterangan)}`);
+        const response = await fetch(GAS_API_URL, {
+          method: 'POST',
+          body: JSON.stringify(data)
+        });
         const result = await response.json();
         btn.disabled = false; btn.innerText = 'Kirim Konfirmasi';
         resBox.className = result.success ? 'result-box found' : 'result-box error';
@@ -668,6 +507,76 @@ function closeJourneyModal() {
         if (result.success) { document.getElementById('confNama').value = ''; document.getElementById('confUcapan').value = ''; }
       } catch (err) {
         btn.disabled = false; btn.innerText = 'Kirim Konfirmasi'; resBox.className = 'result-box error'; resBox.innerHTML = '⚠️ Gagal mengirim.'; resBox.style.display = 'block';
+      }
+    }
+
+    // 7. LOGIKA UPLOAD HADIAH
+    let selectedFileBase64 = '';
+    let selectedFileName = '';
+    let selectedFileType = '';
+
+    function handleFileSelect(event) {
+      const file = event.target.files[0];
+      if (file) {
+        selectedFileName = `Bukti_${document.getElementById('hadiahNama').value || 'Tamu'}_${Date.now()}.jpg`;
+        selectedFileType = file.type;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          selectedFileBase64 = e.target.result.split(',')[1]; // Hapus prefix "data:image/..."
+          document.getElementById('fileNameDisplay').innerText = '✅ File terpilih: ' + file.name;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    async function kirimHadiah() {
+      const nama = document.getElementById('hadiahNama').value.trim();
+      const nominal = document.getElementById('hadiahNominal').value.trim();
+      const btn = document.getElementById('btnKirimHadiah');
+      const resBox = document.getElementById('hadiahResult');
+
+      if (!nama) { alert('Nama pengirim wajib diisi'); return; }
+      if (!selectedFileBase64) { alert('Silakan upload bukti transfer terlebih dahulu'); return; }
+
+      btn.disabled = true; btn.innerText = 'Mengirim...';
+      resBox.className = 'result-box'; resBox.style.display = 'none';
+
+      const payload = {
+        action: 'simpanHadiah',
+        nama: nama,
+        nominal: nominal || 'Tidak disebutkan',
+        buktiBase64: selectedFileBase64,
+        fileName: selectedFileName,
+        mimeType: selectedFileType
+      };
+
+      try {
+        const response = await fetch(GAS_API_URL, {
+          method: 'POST',
+          body: JSON.stringify(payload)
+        });
+        const result = await response.json();
+        btn.disabled = false; btn.innerText = 'Kirim Konfirmasi Hadiah';
+        
+        if (result.success) {
+          resBox.className = 'result-box found';
+          resBox.innerHTML = '✅ ' + result.message;
+          // Reset form
+          document.getElementById('hadiahNama').value = '';
+          document.getElementById('hadiahNominal').value = '';
+          document.getElementById('hadiahFile').value = '';
+          document.getElementById('fileNameDisplay').innerText = '';
+          selectedFileBase64 = '';
+        } else {
+          resBox.className = 'result-box error';
+          resBox.innerHTML = '❌ ' + result.message;
+        }
+        resBox.style.display = 'block';
+      } catch (err) {
+        btn.disabled = false; btn.innerText = 'Kirim Konfirmasi Hadiah';
+        resBox.className = 'result-box error';
+        resBox.innerHTML = '⚠️ Gagal mengirim. Periksa koneksi Anda.';
+        resBox.style.display = 'block';
       }
     }
   </script>
